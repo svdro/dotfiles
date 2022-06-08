@@ -1,5 +1,4 @@
-"==================== VIM-PLUG =======================
-" auto install vim-plug
+"==================== VIM-PLUG ======================= auto install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -20,18 +19,22 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Telescope
-"Plug 'nvim-lua/plenary.nvim'
-"Plug 'nvim-telescope/telescope-fzy-native.nvim'
-"Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " CMP
-"Plug 'hrsh7th/cmp-vsnip'
-"Plug 'hrsh7th/vim-vsnip'
+Plug 'L3MON4D3/LuaSnip'        " snippet engine
+Plug 'rafamadriz/friendly-snippets' " a collection of snippets
+Plug 'saadparwaiz1/cmp_luasnip'
 
-"Plug 'onsails/lspkind-nvim' "lspkind adds pictograms to nvim lsp
-"Plug 'hrsh7th/cmp-nvim-lsp' " cmp is the completion engine
-"Plug 'hrsh7th/cmp-buffer'
-"Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/nvim-cmp'        " completion engine
+Plug 'hrsh7th/cmp-buffer'      " buffer completions
+Plug 'hrsh7th/cmp-path'        " path completions
+Plug 'hrsh7th/cmp-cmdline'     " cmdline completions
+
+"Plug 'onsails/lspkind-nvim'    " lspkind adds pictograms to nvim lsp
+"Plug 'hrsh7th/cmp-nvim-lsp'    " cmp is the completion engine
 
 
 " LSP
@@ -76,14 +79,14 @@ set timeoutlen=1000 ttimeoutlen=0 "deal with esc delay
 let mapleader=" "
 nnoremap <leader>s :source ~/.config/nvim/init.vim<cr>
 
-"" telescope
+" telescope
 "nnoremap <leader>ps :lua require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ")})<cr>
 "nnoremap <leader>pf :lua require('telescope.builtin').live_grep({ prompt_title = 'find string in open buffers...', grep_open_files = true })<cr>
 
-"nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-"nnoremap <leader>fg :lua require('telescope.builtin').live_grep({ prompt_title = 'find string in open buffers...', grep_open_files = true })<cr>
-"nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-"nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg :lua require('telescope.builtin').live_grep({ prompt_title = 'find string in open buffers...', grep_open_files = true })<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 "" lsp
 ""nnoremap <leader>rel vim.lsk.stop_client(vim.lsp.get_active_clients())<cr>
@@ -120,7 +123,7 @@ augroup END
 "==================== LUA ============================
 "lua require("tele")
 "lua require("lsp")
-"lua require("treesitter")
+lua require("config")
 
 
 "==================== COLOR-SCHEME ===================
