@@ -1,6 +1,7 @@
 # dotfiles
 
 ## nvim
+
  * [ ] language servers:
    * pyright: `pip install pyright`
    * tsserver: `npm install -g typescript-language-server typescript`
@@ -10,5 +11,6 @@
  * [ ] for Treesitter (syntax highlighting) to enable all languages ->  :TSInstall all
 
 ## alacritty
- * install [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) font.
 
+ * [ ] if ~/.config/alacritty is a symlink, live reload config does not work. Restart to after changing "alacritty.yml".
+ * [ ] install [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) font.
