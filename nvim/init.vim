@@ -7,10 +7,13 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-
 " Optics
 Plug 'gruvbox-community/gruvbox'
+Plug 'folke/tokyonight.nvim'
+Plug 'lunarvim/colorschemes'
 Plug 'itchyny/lightline.vim'
+
+
 Plug 'preservim/nerdcommenter'
 
 " Treepicker
@@ -128,6 +131,17 @@ lua require("config")
 
 
 "==================== COLOR-SCHEME ===================
+set termguicolors
+
 colorscheme gruvbox
+"colorscheme lunar
+"colorscheme tokyonight
 set background=dark
-let g:lightline = {'colorscheme': 'gruvbox'}
+
+let g:lightline = {
+      \ 'colorscheme': 'tokyonight',
+      \ }
+
+lua vim.cmd[[colorscheme tokyonight]]
+lua vim.g.tokyonight_style="storm"
+lua vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
