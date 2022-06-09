@@ -16,34 +16,6 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
---local kind_icons = {
-  --Class = '∴',
-  --Color = '🖌',
-  --Constant = '𝜋',
-  --Constructor = '⬡',
-  --Enum = '',
-  --EnumMember = '',
-  --Event = '',
-  --Field = '🠶',
-  --File = '',
-  --Folder = '',
-  --Function = 'ƒ',
-  --Interface = '',
-  --Keyword = '🗝',
-  --Method = '𝘮',
-  --Module = '📦',
-  --Operator = '≠',
-  --Property = '∷',
-  --Reference = '⊷',
-  --Snippet = '{}',
-  --Struct = '',
-  --Text = '#',
-  --TypeParameter = '×',
-  --Unit = '()',
-  --Variable = '𝓧',
---}
-
---   פּ ﯟ   some other good icons
 local kind_icons = {
   Text = "",
   Method = "m",
@@ -111,11 +83,12 @@ cmp.setup {
   },
 
   formatting = {
-    fields={ "kind", "abbr", "menu" },
+    fields={  "abbr", "kind", "menu" },
     format = function(entry, vim_item)
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       vim_item.menu = ( {
-        --nvim_lsp = "[LSP]",
+        nvim_lsp = "[LSP]",
+        nvim_lsp_signature_help = "[SignatureHelp]",
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
@@ -125,10 +98,15 @@ cmp.setup {
   },
 
   sources = {
+    { name = "nvim_lsp" },
+    { name = "nvim_lsp_signature_help" },
     { name = "luasnip" },
-    { name = "buffer", keyword_length = 2 },
+    --{ name = "buffer", keyword_length = 2 },
+    { name = "buffer" },
     { name = "path" },
   },
+
+  --completion = { completeopt = "menu,menuone,noinsert" },
 
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

@@ -1,4 +1,5 @@
-"==================== VIM-PLUG ======================= auto install vim-plug
+"==================== VIM-PLUG =======================
+" auto install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -24,22 +25,21 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 " CMP
-Plug 'L3MON4D3/LuaSnip'        " snippet engine
-Plug 'rafamadriz/friendly-snippets' " a collection of snippets
+Plug 'L3MON4D3/LuaSnip'                       " snippet engine
+Plug 'rafamadriz/friendly-snippets'           " a collection of snippets
 Plug 'saadparwaiz1/cmp_luasnip'
 
-Plug 'hrsh7th/nvim-cmp'        " completion engine
-Plug 'hrsh7th/cmp-buffer'      " buffer completions
-Plug 'hrsh7th/cmp-path'        " path completions
-Plug 'hrsh7th/cmp-cmdline'     " cmdline completions
-
-"Plug 'onsails/lspkind-nvim'    " lspkind adds pictograms to nvim lsp
-"Plug 'hrsh7th/cmp-nvim-lsp'    " cmp is the completion engine
+Plug 'hrsh7th/nvim-cmp'                       " completion engine
+Plug 'hrsh7th/cmp-buffer'                     " buffer completions
+Plug 'hrsh7th/cmp-path'                       " path completions
+Plug 'hrsh7th/cmp-cmdline'                    " cmdline completions
+Plug 'hrsh7th/cmp-nvim-lsp'                   " bridge between lsp and cmp
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'    " a working signature_help!
 
 
 " LSP
-
-"Plug 'neovim/nvim-lspconfig' "a collection of configurations for the inbuild LSP client
+Plug 'neovim/nvim-lspconfig' " a collection of configurations for the inbuild LSP client
+Plug 'williamboman/nvim-lsp-installer' " automatically installs language servers.
 
 call plug#end()
 
@@ -68,7 +68,8 @@ set splitright
 set splitbelow
 
 set incsearch
-set nohlsearch "highlight found words
+set hlsearch
+nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
 set updatetime=50
 set showmatch "show matching parenthesis
@@ -89,14 +90,15 @@ nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 "" lsp
-""nnoremap <leader>rel vim.lsk.stop_client(vim.lsp.get_active_clients())<cr>
-"nnoremap gd :lua vim.lsp.buf.definition()<cr>
-"nnoremap K :lua vim.lsp.buf.hover()<cr>
-"nnoremap <leader>vrn :lua vim.lsp.buf.rename( vim.fn.input("rename: ") )<cr>
-"nnoremap <leader>vd :lua vim.diagnostic.open_float()<cr>
-"nnoremap <leader>vca :lua vim.lsp.buf.code_action()<cr>
-"nnoremap <leader>f :lua vim.lsp.buf.formatting()<cr>
-"inoremap <C-s> <cmd>lua vim.lsp.buf.signature_help()<cr>
+nnoremap gd :lua vim.lsp.buf.definition()<cr>
+nnoremap K :lua vim.lsp.buf.hover()<cr>
+nnoremap <leader>vrn :lua vim.lsp.buf.rename( vim.fn.input("rename: ") )<cr>
+nnoremap <leader>vd :lua vim.diagnostic.open_float()<cr>
+nnoremap <leader>f :lua vim.lsp.buf.formatting()<cr>
+inoremap <C-s> <cmd>lua vim.lsp.buf.signature_help()<cr>
+nnoremap <C-s> <cmd>lua vim.lsp.buf.signature_help()<cr>
+
+
 
 
 "==================== FOLDING ======================
@@ -108,18 +110,17 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 "==================== AUTO-COMMANDS  =================
 "TODO: replace with lsp formatting
-fun! TrimWhitespace()
-  let l:save = winsaveview()
-  keeppatterns %s/\s\+$//e
-  call winrestview(l:save)
-endfun
+"fun! TrimWhitespace()
+  "let l:save = winsaveview()
+  "keeppatterns %s/\s\+$//e
+  "call winrestview(l:save)
+"endfun
 
-augroup TRIM_WHITE_SPACES
-  autocmd!
-  autocmd BufWritePre * :call TrimWhitespace()
-augroup END
+"augroup TRIM_WHITE_SPACES
+  "autocmd!
+  "autocmd BufWritePre * :call TrimWhitespace()
+"augroup END
 
-"
 "==================== LUA ============================
 "lua require("tele")
 "lua require("lsp")
@@ -130,5 +131,3 @@ lua require("config")
 colorscheme gruvbox
 set background=dark
 let g:lightline = {'colorscheme': 'gruvbox'}
-
-"==================== EXPERIMENTS =-==================
