@@ -7,13 +7,11 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-" Optics
+
+" Essentials
 Plug 'gruvbox-community/gruvbox'
 Plug 'folke/tokyonight.nvim'
-Plug 'lunarvim/colorschemes'
 Plug 'itchyny/lightline.vim'
-
-
 Plug 'preservim/nerdcommenter'
 
 " Treepicker
@@ -39,10 +37,10 @@ Plug 'hrsh7th/cmp-cmdline'                    " cmdline completions
 Plug 'hrsh7th/cmp-nvim-lsp'                   " bridge between lsp and cmp
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'    " a working signature_help!
 
-
 " LSP
 Plug 'neovim/nvim-lspconfig' " a collection of configurations for the inbuild LSP client
 Plug 'williamboman/nvim-lsp-installer' " automatically installs language servers.
+Plug 'jose-elias-alvarez/null-ls.nvim' " allow non-LSP sources to hook into nvim's LSP client for Linting, Formatting, Diagnostics. e.g: Flake8
 
 call plug#end()
 
@@ -83,26 +81,33 @@ set timeoutlen=1000 ttimeoutlen=0 "deal with esc delay
 let mapleader=" "
 nnoremap <leader>s :source ~/.config/nvim/init.vim<cr>
 
-" telescope
-"nnoremap <leader>ps :lua require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ")})<cr>
-"nnoremap <leader>pf :lua require('telescope.builtin').live_grep({ prompt_title = 'find string in open buffers...', grep_open_files = true })<cr>
+" navigation 
+nnoremap <C-h> :bprev<cr>
+nnoremap <C-l> :bnext<cr>
+nnoremap <down> :resize -2<cr>
+nnoremap <up> :resize +2<cr>
+nnoremap <left> :vertical resize -2<cr>
+nnoremap <right> :vertical resize +2<cr>
+
 
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg :lua require('telescope.builtin').live_grep({ prompt_title = 'find string in open buffers...', grep_open_files = true })<cr>
+nnoremap <leader>fc :lua require('telescope.builtin').live_grep({ prompt_title="find string in current working directory" })<cr>
+nnoremap <leader>fo :lua require('telescope.builtin').live_grep({ prompt_title="find string in open buffers", grep_open_files = true })<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
-"" lsp
+
 nnoremap gd :lua vim.lsp.buf.definition()<cr>
 nnoremap K :lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>vrn :lua vim.lsp.buf.rename( vim.fn.input("rename: ") )<cr>
-nnoremap <leader>vd :lua vim.diagnostic.open_float()<cr>
-nnoremap <leader>f :lua vim.lsp.buf.formatting()<cr>
+nnoremap <leader>f :lua vim.lsp.buf.formatting_sync()<cr> 
 inoremap <C-s> <cmd>lua vim.lsp.buf.signature_help()<cr>
 nnoremap <C-s> <cmd>lua vim.lsp.buf.signature_help()<cr>
 
-
-
+nnoremap <leader>do :lua vim.diagnostic.open_float()<cr>
+nnoremap <leader>dp :lua vim.diagnostic.goto_prev()<cr>
+nnoremap <leader>dn :lua vim.diagnostic.goto_next()<cr>
+nnoremap <leader>q : lua vim.diagnostic.setqflist()<cr>
 
 "==================== FOLDING ======================
 "set foldcolumn=2
@@ -125,10 +130,7 @@ nnoremap <C-s> <cmd>lua vim.lsp.buf.signature_help()<cr>
 "augroup END
 
 "==================== LUA ============================
-"lua require("tele")
-"lua require("lsp")
 lua require("config")
-
 
 "==================== COLOR-SCHEME ===================
 set termguicolors
