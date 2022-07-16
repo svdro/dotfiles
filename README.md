@@ -21,6 +21,8 @@
   * [ ] Null-ls: get prettier to work for js.
   * [ ] Diagnostics: figure out how to ignore individual error messages.
   * [ ] Telescope: give a little more love to Telescope config.
+  * [ ] create key map for reloading language server.
+    * look at `:h lsp-faq`
 
 ## alacritty
 
