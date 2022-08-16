@@ -35,7 +35,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
-local servers = { "pyright", "gopls", "tsserver", "sumneko_lua" }
+local servers = { "pyright", "gopls", "tsserver", "sumneko_lua", "rust_analyzer", "taplo" }
 for _, server in pairs(servers) do
 	local opts = {
 		on_attach = on_attach,

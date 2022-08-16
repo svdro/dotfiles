@@ -24,7 +24,7 @@ font:
     #family: "Menlo"
     family: "Hack Nerd Font"
 
-  size: 14.0
+  size: 16.0
 
 # Bell
 # The bell is rung every time the BEL control character is received.

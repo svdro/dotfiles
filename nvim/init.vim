@@ -25,6 +25,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+" Git
+Plug 'lewis6991/gitsigns.nvim'
+
+
 " CMP
 Plug 'L3MON4D3/LuaSnip'                       " snippet engine
 Plug 'rafamadriz/friendly-snippets'           " a collection of snippets
