@@ -18,7 +18,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Vim-Go
-"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
@@ -113,14 +113,15 @@ nnoremap <leader>dp :lua vim.diagnostic.goto_prev()<cr>
 nnoremap <leader>dn :lua vim.diagnostic.goto_next()<cr>
 nnoremap <leader>q :lua vim.diagnostic.setqflist()<cr>
 
-"nnoremap <leader>r :call ReloadLSP()<cr>
+nnoremap <leader>r :call ReloadLSP()<cr>
 
-"fun! ReloadLSP()
-    "lua print("reloading lsp client...")
-    "lua vim.lsp.stop_client(vim.lsp.get_active_clients())
+fun! ReloadLSP()
+    lua print("reloading lsp client...")
+    lua vim.lsp.stop_client(vim.lsp.get_active_clients())
+    lua vim.lsp.start_client()
     ":edit
     ""lua vim.api.nvim_exec(:edit)
-"endfun
+endfun
 
 "==================== FOLDING ======================
 "set foldcolumn=2
