@@ -46,6 +46,10 @@ Plug 'neovim/nvim-lspconfig' " a collection of configurations for the inbuild LS
 Plug 'williamboman/nvim-lsp-installer' " automatically installs language servers.
 Plug 'jose-elias-alvarez/null-ls.nvim' " allow non-LSP sources to hook into nvim's LSP client for Linting, Formatting, Diagnostics. e.g: Flake8
 
+
+" Copilot
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 "==================== BASICS =======================
@@ -86,6 +90,7 @@ let mapleader=" "
 nnoremap <leader>s :source ~/.config/nvim/init.vim<cr>
 
 " navigation 
+nnoremap <C-p> :b#<cr>
 nnoremap <C-h> :bprev<cr>
 nnoremap <C-l> :bnext<cr>
 nnoremap <down> :resize -2<cr>
@@ -94,6 +99,16 @@ nnoremap <left> :vertical resize -2<cr>
 nnoremap <right> :vertical resize +2<cr>
 
 
+" copilot
+let g:copilot_no_tab_map = v:true
+"let g:copilot_filetypes = { 'markdown': v:false,}
+imap <silent><script><expr> <leader><tab> copilot#Accept("\<CR>") 
+inoremap <C-n>  <Plug>(copilot-next)
+inoremap <C-p>  <Plug>(copilot-previous)
+inoremap <C-]>  <Plug>(copilot-dismiss)
+inoremap <C-[>  <Plug>(copilot-suggest) 
+
+" telescope
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fc :lua require('telescope.builtin').live_grep({ prompt_title="find string in current working directory" })<cr>
 nnoremap <leader>fo :lua require('telescope.builtin').live_grep({ prompt_title="find string in open buffers", grep_open_files = true })<cr>
