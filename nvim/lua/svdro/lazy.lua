@@ -13,4 +13,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- load plugins
-require("lazy").setup("svdro.plugins")
+require("lazy").setup("svdro.plugins", {
+  change_detection = {
+    notify = false,
+  },
+})

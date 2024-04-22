@@ -12,4 +12,12 @@ return {
       vim.o.timeout = true
       vim.o.timeoutlen = 500
     end, opts = {}, },
+
+  -- bufferline
+  { 
+    "akinsho/bufferline.nvim", dependencies = { "nvim-tree/nvim-web-devicons" },
+    version = "*", opts = { 
+      options = { mode = "tabs", numbers = "buffer_id", separator_syle = "slant", },
+    },
+  },
 }
