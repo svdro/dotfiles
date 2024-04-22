@@ -1,8 +1,0 @@
-require("config.treesitter")
-require("config.cmp")
-require("config.lsp")
-require("config.diagnostics")
---require("config.keymaps")
-require("config.telescope")
-require("config.null-ls")
-require("config.gitsigns")
