@@ -4,8 +4,8 @@ return {
   "nvim-lua/plenary.nvim", -- collection of lua functions that many other plugins use
 
   -- colorschemes
-  { "folke/tokyonight.nvim", priority = 1002, }, -- tokyonight colorscheme
-  { "gruvbox-community/gruvbox", priority = 1001, }, -- gruvbox colorscheme
+  { "folke/tokyonight.nvim",  opts = { style = "storm" }, priority = 1002, }, -- tokyonight colorscheme
+  { "gruvbox-community/gruvbox",  priority = 1001, }, -- gruvbox colorscheme
 
   -- indentation
   { "lukas-reineke/indent-blankline.nvim", event = { "BufReadPre", "BufNewFile" },
