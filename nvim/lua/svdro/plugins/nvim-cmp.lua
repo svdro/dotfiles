@@ -96,8 +96,7 @@ return {
 
       -- TODO: if copilot works with cmp, reenable this
       experimental = {
-        --ghost_text = true,
-        ghost_text = true,
+        ghost_text = false,
       },
     })
 

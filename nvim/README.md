@@ -1,11 +1,13 @@
-# nvim
+## nvim config
 
 ### TODO:
  - [ ] figure out folding (maybe use treesitter for folding)
- - [ ] maybe move all keymaps to the same place
+ - [x] maybe move all keymaps to the same place
+   - seems unpractical
  - [ ] maybe switch to nvim nightly (e.g. **treesitter**)
  - [ ] maybe find an open source solution for replacing **copilot** with **ollama** 
  - [ ]  [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+ - [ ]  [faith/vim-go](https://github.com/fatih/vim-go) go support (not sure I need this on top of lsp)   
    adds git decorations
  - [ ]  [copilot](https://github.com/github/copilot.vim)
  - [ ]  [llm.nvim](https://github.com/huggingface/llm.nvim) try this out as an alternative to copilot
@@ -33,6 +35,8 @@
 
  - [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua) file explorer
  - [telescope](https://github.com/nvim-telescope/telescope.nvim/tree/0.1.x) fuzzy finder for files
+ - [folke/todo-comments](https://github.com/folke/todo-comments.nvim) highlight and search comments like 
+   `TODO`, `NOTE`, etc. Really cool integration with **telescope**    
  - [telescope-fzf-native](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
    improves sorting performance for **telescope**
 
@@ -69,6 +73,15 @@
     - `<C-v>` open files in vertical split (**nvim-tree**, **telescope**)
     - `<C-x>` open files in horizontal split (**nvim-tree**, **telescope**)
     - `<C-t>` open files in a new tab (**nvim-tree**, **telescope**)
+  - **telescope**
+    - `<leader>ff` fuzzy find files in cwd
+    - `<leader>fb` fuzzy find files in open buffers
+    - `<leader>fr` fuzzy find recent files (anywhere)
+    - `<leader>fs` find string in cwd
+    - `<leader>fo` find string in open buffers
+    - `<leader>fc` find string under cursor in cwd
+    - `<leader>ft` find `PERF`, `HACK`, `TODO`, `NOTE`, `FIX`, `WARNING` (requires **folke/todo-comments**)
+    - `<leader>fh` fuzzy find help documentation
   - **nvim-tree** 
     - `r` rename a file *nvim-tree* (renames open buffers)
     - `a` create a new file
@@ -86,6 +99,9 @@
     - `<C-e>` abort
     - `<C-Space>` show completion suggestions
     - `<CR>` confirm selection
+  - **default nvim keybindings**
+    - `<C-o>` move backward through **jump-list**
+    - `<C-i>` move forward through **jump-list**
 
 
 ### Notes
