@@ -7,6 +7,11 @@ return {
   { "folke/tokyonight.nvim", priority = 1002, }, -- tokyonight colorscheme
   { "gruvbox-community/gruvbox", priority = 1001, }, -- gruvbox colorscheme
 
+  -- indentation
+  { "lukas-reineke/indent-blankline.nvim", event = { "BufReadPre", "BufNewFile" },
+    main = "ibl", opts = { indent = { char = "┊" }, },
+  },
+
   -- which-key (suggests shortcuts after 500 ms)
   { "folke/which-key.nvim", event = "VeryLazy", init = function() 
       vim.o.timeout = true
