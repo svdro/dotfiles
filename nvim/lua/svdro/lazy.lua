@@ -13,7 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- load plugins
-require("lazy").setup("svdro.plugins", {
+require("lazy").setup({ { import = "svdro.plugins" }, { import = "svdro.plugins.lsp" } }, {
   change_detection = {
     notify = false,
   },

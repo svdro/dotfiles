@@ -3,8 +3,8 @@ local opt = vim.opt -- alias vim.opt
 
 -- TODO: maybe find a better way to manage options that require plugins
 -- colorscheme (assuming colorschemes are installed)
-local status, err = pcall(vim.cmd, "colorscheme tokyonight") -- or gruvbox
-if not status then
+local ok, err = pcall(vim.cmd, "colorscheme tokyonight") -- or gruvbox
+if not ok then
     print("Failed to set colorscheme: " .. err)
 end
 

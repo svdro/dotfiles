@@ -1,4 +1,4 @@
 plugged
 #lazy-lock.json
 *.bak
-
+.luarc.json

@@ -3,10 +3,10 @@
 local check_backspace = function()
 	local col = vim.fn.col(".") - 1
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-end       
+end
 
 return {
-  "hrsh7th/nvim-cmp", 
+  "hrsh7th/nvim-cmp",
   event = "InsertEnter", -- only load the first time we go into insert mode
   dependencies = {
     "hrsh7th/cmp-buffer",                                                       -- completion source for text in bufffer
@@ -82,9 +82,10 @@ return {
 
       -- sources (order matters)
       sources = ({
-        { name = "luasnip" }, -- snippets
-        { name = "buffer" },  -- text within current buffer
-        { name = "path" },    -- file system paths
+        { name = "nvim_lsp" },  -- nvim_lsp
+        { name = "luasnip" },   -- snippets
+        { name = "buffer" },    -- text within current buffer
+        { name = "path" },      -- file system paths
       }),
 
       formatting = {
