@@ -1,0 +1,21 @@
+# Colorschemes
+# - "https://github.com/alacritty/alacritty-theme/tree/master/themes"
+# - create a new file per colorscheme, and import it here.
+import = [
+  "~/.config/alacritty/gruvbox_material.toml"
+  #"~/.config/alacritty/tokyonight_storm.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding.x = 0
+padding.y = 0
+
+opacity = 0.94
+decorations = "none"
+
+[font]
+normal.family = "Hack Nerd Font"
+size = 11
