@@ -109,8 +109,19 @@
 
 #### nvim-tree 
 
+  - `<leader>r` **refresh** file explorer
+  - `<leader>ee` **toggle** file explorer
+  - `<leader>ef` **toggle** file explorer *(on current file)*
+  - `<leader>ec` **collapse** file explorer
+  - `<leader>er` **refresh** file explorer
+
+  *(on attach)*
+
   - `r` - **rename** a file *(shoud rename **open buffers** but NOT **imports**)*
   - `a` - **create** a new file
+  - `<leader>en` set **root** to **current node**
+  - `<leader>ep` set **root** to **parent node**
+
 
 #### treesitter 
 
