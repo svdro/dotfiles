@@ -31,7 +31,9 @@
   - [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua) file explorer
   - [telescope](https://github.com/nvim-telescope/telescope.nvim/tree/0.1.x) fuzzy finder for files
   - [folke/todo-comments](https://github.com/folke/todo-comments.nvim) highlight and search comments like 
-    `TODO`, `NOTE`, etc. Really cool integration with **telescope**    
+    `TODO`, `NOTE`, etc. Really cool integrations with **telescope** and **trouble**   
+  - [folke/trouble.nvim](https://github.com/folke/trouble.nvim) 
+    opens lists for navigating **todos**, **quickfixes**, **diagnostics**, etc
   - [telescope-fzf-native](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
     improves sorting performance for **telescope**
 
@@ -95,6 +97,21 @@
   - `<C-x>` - open files in **horizontal split**
   - `<C-t>` - open files in a **new tab**
 
+#### nvim-tree 
+
+  - `<leader>r` **refresh** file explorer
+  - `<leader>ee` **toggle** file explorer
+  - `<leader>ef` **toggle** file explorer *(on current file)*
+  - `<leader>ec` **collapse** file explorer
+  - `<leader>er` **refresh** file explorer
+
+  *( on nvim-tree attach )*
+
+  - `r` - **rename** a file *(shoud rename **open buffers** but NOT **imports**)*
+  - `a` - **create** a new file
+  - `<leader>en` set **root** to **current node**
+  - `<leader>ep` set **root** to **parent node**
+
 #### telescope
 
   - `<leader>ff` - fuzzy find **files** in **cwd**
@@ -107,21 +124,21 @@
   - `<leader>fh` - **fuzzy find help documentation**
   - `<leader>fq` - **fuzzy find item** in **quickfix list**
 
-#### nvim-tree 
+  *( on telescope attach )*
 
-  - `<leader>r` **refresh** file explorer
-  - `<leader>ee` **toggle** file explorer
-  - `<leader>ef` **toggle** file explorer *(on current file)*
-  - `<leader>ec` **collapse** file explorer
-  - `<leader>er` **refresh** file explorer
+  - `<leader>xx` - open with trouble
 
-  *(on attach)*
+#### trouble
+  - `<leader>xx` - toggle **trouble** list *(last used list)*
+  - `<leader>xw` - toggle **workspace diagnostics** list
+  - `<leader>xd` - toggle **document diagnostics** list
+  - `<leader>xq` - toggle **quickfix** list
+  - `<leader>xl` - toggle **loclist**
+  - `<leader>xt` - toggle **todo** list (e.g. `PERF`, `HACK`, `TODO`, `NOTE`, `FIX`, `WARNING`)
 
-  - `r` - **rename** a file *(shoud rename **open buffers** but NOT **imports**)*
-  - `a` - **create** a new file
-  - `<leader>en` set **root** to **current node**
-  - `<leader>ep` set **root** to **parent node**
+  *( on lsp attach )*
 
+  - `<leader>gR` - toggle **lsp references** list
 
 #### treesitter 
 

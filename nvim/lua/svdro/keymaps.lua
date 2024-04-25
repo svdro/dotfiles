@@ -3,8 +3,6 @@ local keymap = vim.keymap -- alias vim.keymap
 -- leader key
 vim.g.mapleader = " "
 
--- TODO: folding
-
 -- search TODO: maybe change this
 keymap.set("n", "<ESC>", ":nohl<CR>", { noremap=true, silent=true, desc = "Clear search highlights" })
 
