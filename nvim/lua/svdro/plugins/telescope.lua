@@ -75,6 +75,7 @@ local telescope_config = {
     -- set keymaps
     local keymap = vim.keymap
 
+    keymap.set("n", "<leader>fq", builtin.quickfix, { noremap = true, silent = true, desc = "Fuzzy find entry in quickfix list" })  -- fyzzy find in quickfix list
     keymap.set("n", "<leader>ff", builtin.find_files, { noremap=true, silent = true, desc = "Fuzzy find files in cwd" })            -- fuzzy find files cwd
     keymap.set("n", "<leader>fb", builtin.buffers, { noremap=true, silent = true, desc = "Fuzzy find in open buffers" })            -- fuzzy find files in open buffers
     keymap.set("n", "<leader>fr", builtin.oldfiles, { noremap=true, silent = true, desc = "Fuzzy find recent files" })              -- fuzzy find recent files

@@ -1,24 +1,14 @@
 ## nvim config
 
 ## TODOs:
-
-  - [ ] renaming things with **nvim-tree** and **lsp** does not change all instances in other files
-    - issue with **antosha417/nvim-lsp-file-operations**
-  - [`gopls`](https://github.com/golang/tools/blob/master/gopls/README.md), add this to **Mason** after setting up go
-  - [ ] do something about `(duplicated)` in **bufferline** 
-    - either get rid of it or replace it with an icon
-  - [ ] figure out folding (maybe use treesitter for folding)
-  - [x] maybe move all keymaps to the same place
-    - seems unpractical
-  - [ ] maybe switch to nvim nightly (e.g. **treesitter**)
-  - [ ] maybe find an open source solution for replacing **copilot** with **ollama** 
-    
-  - [ ]  [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
-  - [ ]  [faith/vim-go](https://github.com/fatih/vim-go) go support (not sure I need this on top of lsp)   
-    adds git decorations
-  - [ ]  [copilot](https://github.com/github/copilot.vim)
-  - [ ]  [llm.nvim](https://github.com/huggingface/llm.nvim) try this out as an alternative to copilot
-    github copilot integration
+  - [ ] formatting (black, etc..)
+  - [ ] function signature (make sure this works correctly)
+  - [ ] plugins
+    - [ ]  [gitsigns](https://github.com/lewis6991/gitsigns.nvim) adds git decorations
+    - [ ]  [faith/vim-go](https://github.com/fatih/vim-go) go support (not sure I need this on top of lsp)   
+    - [ ]  [copilot](https://github.com/github/copilot.vim) github copilot integration
+  - [ ] try open source solution for **Copilot**
+    - [ ]  [llm.nvim](https://github.com/huggingface/llm.nvim) try this out as an alternative to copilot
 
 ## all plugins
 
@@ -72,9 +62,8 @@
 
   - [neovim/lspconfig](https://github.com/neovim/nvim-lspconfig) configs for the default **nvim LSP client**
   - [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp/) completion source for the builtin **nvim LSP client**
-  <!--TODO: Does not seem to work! -->
-  - [antosha417/nvim-lsp-file-operations](https://github.com/antosha417/nvim-lsp-file-operations) 
-    interacts with **nvim-tree** to for example modify imports when a file has been renamed.
+  - ["hrsh7th/cmp-nvim-lsp-signature-help"](https://github.com/hrsh7th/cmp-nvim-lsp-signature-help)
+    displays function signatures with current parameter emphasized
   - [folke/neodev.nvim](https://github.com/folke/neodev.nvim)
     adds improved functionality to the **lua language server** (for editing nvim config)
     
@@ -120,7 +109,7 @@
 
 #### nvim-tree 
 
-  - `r` - **rename** a file *(shoud rename **open buffers** and **imports**)*
+  - `r` - **rename** a file *(shoud rename **open buffers** but NOT **imports**)*
   - `a` - **create** a new file
 
 #### treesitter 
@@ -151,7 +140,7 @@
   - `<leader>do` - show **diagnostic** in **current line**
   - `<leader>dn` - jump to **next diagnostic**
   - `<leader>dp` - jump to **prev diagnostic**
-  - `<leader>rn` - **smart rename** *(works across files, but need to write changes manually)*
+  - `<leader>rn` - **smart rename** *(only works reliably within the current buffer)*
   - `<leader>ca` - **show available code actions**
   - `K` - popup documentation for what's under the cursor
   - `gD` - default nvim goto declaration
@@ -170,6 +159,7 @@
   `dockerls`
   [`docker_compose_language_service`](https://github.com/microsoft/compose-language-service)
   `html`,
+  [`gopls`](https://github.com/golang/tools/blob/master/gopls/README.md)
   [`lua_ls`](https://github.com/LuaLS/lua-language-server),
   [`pyright`](https://github.com/microsoft/pyright),
   [`tsserver`](https://github.com/typescript-language-server/typescript-language-server)
@@ -185,5 +175,3 @@
   - otherwise check: `:echo &runtimepath`
   - include **lazy-lock.json** in version control
   - `:Lazy restore` updates all plugins to the version from the lockfile
-
-

@@ -25,7 +25,7 @@ return {
         "cssls",
         "dockerls",
         "docker_compose_language_service",
-        --"gopls",
+        "gopls",
         "html",
         "lua_ls",
         "pyright",

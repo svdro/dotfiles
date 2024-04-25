@@ -39,6 +39,14 @@ opt.colorcolumn = "78"
 opt.splitright = true -- split vertical windows to the right
 opt.splitbelow = true -- split horizontal windows to the bottom (e.g. when :h splitbelow)
 
+-- folding (use window open (wo) to set folding options at the window level)
+local wo = vim.wo -- window open
+wo.foldmethod = "expr"
+wo.foldexpr = "nvim_treesitter#foldexpr()"
+wo.foldlevel = 99
+opt.foldopen:remove("block")
+opt.foldopen:remove("search")
+
 -- other
 --vim.cmd("let g:netrw_liststyle = 3")    -- setup nvim file explorer to use tree style
 --opt.clipboard:append("unnamedplus")   -- use the system clipboard as the default register

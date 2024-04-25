@@ -3,8 +3,6 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",                                    -- completion source for nvim-lspconfig
-    -- TODO: this does not seem to work! 
-    { "antosha417/nvim-lsp-file-operations", config = true },  -- functionality like modify imports when a file has been renamed
     { "folke/neodev.nvim", opts = {} },                        -- improves "lua_ls" language server
   },
   config = function()

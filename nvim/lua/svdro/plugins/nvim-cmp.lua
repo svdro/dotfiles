@@ -11,6 +11,7 @@ return {
   dependencies = {
     "hrsh7th/cmp-buffer",                                                       -- completion source for text in bufffer
     "hrsh7th/cmp-path",                                                         -- completion source for file system paths
+    "hrsh7th/cmp-nvim-lsp-signature-help",                                      -- completion source for displaying signatures while typing function parameters
     { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp", }, -- snippet engine
     "https://github.com/rafamadriz/friendly-snippets",                          -- more snippets
     "saadparwaiz1/cmp_luasnip",                                                 -- completion source for LuaSnip
@@ -83,6 +84,7 @@ return {
       -- sources (order matters)
       sources = ({
         { name = "nvim_lsp" },  -- nvim_lsp
+        { name = "nvim_lsp_signature_help" },  -- nvim_lsp
         { name = "luasnip" },   -- snippets
         { name = "buffer" },    -- text within current buffer
         { name = "path" },      -- file system paths
