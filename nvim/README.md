@@ -2,12 +2,9 @@
 
 ## TODOs:
 
-- [ ] setup formatting project rules for python and go
 - [ ] maybe linting
-
 - [ ] formatting (black, etc..)
 - [ ] plugins
-  - [ ] [gitsigns](https://github.com/lewis6991/gitsigns.nvim) adds git decorations
   - [ ] [faith/vim-go](https://github.com/fatih/vim-go) go support (not sure I need this on top of lsp)
   - [ ] [copilot](https://github.com/github/copilot.vim) github copilot integration
 - [ ] try open source solution for **Copilot**
@@ -18,6 +15,7 @@
 #### essentials
 
 - [nerdcommenter](https://github.com/preservim/nerdcommenter) comment functions so powerfull ...
+- [gitsigns](https://github.com/lewis6991/gitsigns.nvim) adds git decorations
 - [dressing](https://github.com/stevearc/dressing.nvim)
   better ui for some nvim core functionalities like **input** and **select** dialogue
 - [tokyonight](https://github.com/folke/tokyonight.nvim) tokyonight colorscheme
@@ -94,6 +92,28 @@ _( **lspconfig** is responsible for setting up the **nvim LSP client**)_
 
 - `<C-o>` - move backward through **jump-list**
 - `<C-i>` - move forward through **jump-list**
+
+#### gitsigns
+
+- `<leader>hn` - **next hunk**
+- `<leader>hp` - **prev hunk**
+
+- `<leader>hs` - **stage hunk** _(NOTE: format before staging)_
+- `<leader>hu` - **undo stage** hunk _( can only undo **stage hunk**, not **stage buffer**)_
+- `<leader>hr` - **reset hunk** to last committed state _( or last staged state if hunks have been staged since last commit )_
+- `<leader>hq` - populate **quickfix** with hunk
+- `<leader>hP` - **preview hunk** _( floating window )_
+
+- `<leader>hS` - **stage buffer** _(NOTE: format before staging)_
+- `<leader>hR` - **reset buffer** to last committed state _( or last staged state if hunks have been staged since last commit )_
+
+- `<leader>hb` - **blame** current line _( floating window )_
+- `<leader>hB` - **toggle** current line **blame** _(ghost text)_
+
+- `<leader>hd` - perform a `vimdiff` on the given file with _base_ **Head~**
+
+- `:Gitsigns show {base}` - show _**revision base**_ of the current file
+- `:Gitsigns diffthis {base}` - perform a `vimdiff` on the given file with **{base}** (e.g. `:Gitsigns diffthis Head~`)
 
 #### nvim-tree & telescope
 
