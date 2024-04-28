@@ -4,10 +4,10 @@
 
 - [ ] plugins
   - [ ] [faith/vim-go](https://github.com/fatih/vim-go) go support (not sure I need this on top of lsp)
-  - [ ] **Copilot**
-    - [copilot](https://github.com/github/copilot.vim) official plugin (does not have nice integration with **cmp**)
-    - [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua?ref=tamerlan.dev) unofficial, might be better
-    - [ ] [llm.nvim](https://github.com/huggingface/llm.nvim) alternative to copilot
+- [ ] **Copilot** replacement
+  - the official copilot plugin does not have nice integration with **cmp** (also sucks otherwise)
+  - [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua?ref=tamerlan.dev) unofficial, might be better
+  - [llm.nvim](https://github.com/huggingface/llm.nvim) alternative to copilot
 
 ## all plugins
 
@@ -16,6 +16,7 @@
 - [nerdcommenter](https://github.com/preservim/nerdcommenter) comment functions so powerfull ...
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim) adds git decorations
 - [dressing](https://github.com/stevearc/dressing.nvim)
+- [copilot](https://github.com/github/copilot.vim) official plugin
   better ui for some nvim core functionalities like **input** and **select** dialogue
 - [tokyonight](https://github.com/folke/tokyonight.nvim) tokyonight colorscheme
 - [gruvbox](https://github.com/gruvbox-community) gruvbox colorscheme
@@ -91,6 +92,10 @@ _( **lspconfig** is responsible for setting up the **nvim LSP client**)_
 
 - `<C-o>` - move backward through **jump-list**
 - `<C-i>` - move forward through **jump-list**
+
+#### copilot
+
+- `<leader><tab>` - accept **copilot** suggestion _(to avoid conflicts with **cmp**)_
 
 #### gitsigns
 

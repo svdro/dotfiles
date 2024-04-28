@@ -32,6 +32,7 @@ setup:
   ```
 
 - wait for **Lazy** to install all packages and for **Mason** to setup all **language servers**,**formatters**, etc
+- (optional) setup **Copilot**: `:Copilot setup`
 
 ### alacritty
 
