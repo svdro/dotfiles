@@ -5,7 +5,7 @@
 - [ ] plugins
   - [ ] [faith/vim-go](https://github.com/fatih/vim-go) go support (not sure I need this on top of lsp)
 - [ ] **Copilot** replacement
-  - the official copilot plugin does not have nice integration with **cmp** (also sucks otherwise)
+  - the official copilot plugin does not have nice integration with **cmp**
   - [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua?ref=tamerlan.dev) unofficial, might be better
   - [llm.nvim](https://github.com/huggingface/llm.nvim) alternative to copilot
 
@@ -92,10 +92,17 @@ _( **lspconfig** is responsible for setting up the **nvim LSP client**)_
 
 - `<C-o>` - move backward through **jump-list**
 - `<C-i>` - move forward through **jump-list**
+- `jk` _( in **insert mode** )_ - exit insert mode
 
 #### copilot
 
-- `<leader><tab>` - accept **copilot** suggestion _(to avoid conflicts with **cmp**)_
+_( these are all in **insert mode** )_
+
+- `jj` - **accept** suggestion
+- `jJ` - **dismiss** suggestion
+- `JJ` - **make** suggestion _(e.g. after **dismiss**)_
+- `jL` - **next** suggestion
+- `jH` - **prev** suggestion
 
 #### gitsigns
 

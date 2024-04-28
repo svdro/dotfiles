@@ -18,16 +18,16 @@ return {
     opts = { indent = { char = "┊" } },
   },
 
-  ---- which-key (suggests shortcuts after 500 ms)
-  --{
-  --"folke/which-key.nvim",
-  --event = "VeryLazy",
-  --init = function()
-  --vim.o.timeout = true
-  --vim.o.timeoutlen = 500
-  --end,
-  --opts = {},
-  --},
+  -- which-key (suggests shortcuts after 500 ms)
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 500
+    end,
+    opts = {},
+  },
 
   -- bufferline
   {
@@ -52,21 +52,22 @@ return {
       vim.g.copilot_no_tab_map = true -- disable tab mapping
 
       -- set keymaps
-      -- HACK:
-      -- this is a workaround for the fact that the plugin does not provide
-      -- a lua api, and there's some issue that has to do with how escape sequences
-      -- are handled in lua when using the vim.api.nvim_set_keymap function.
-      -- TODO:
-      -- when <leader><tab> is enabled, typing spaces in insert mode is slow.
-      -- this is because the plugin is waiting for the keybinding to be resolved.
-      -- maybe there's a way to resolve this issue.
-      -- find keybinding for prev, next that don't conflict with cmp.
-      vim.cmd('imap <silent><script><expr> <leader><tab> copilot#Accept("<CR>")')
-      vim.cmd("inoremap <C-k>  <Plug>(copilot-next)")
-      vim.cmd("inoremap <C-j>  <Plug>(copilot-previous)")
-      vim.cmd("inoremap <C-}>  <Plug>(copilot-dismiss)")
-      vim.cmd("inoremap <C-{>  <Plug>(copilot-suggest)")
-      --vim.keymap.set( "i", "<leader><tab>", "copilot#Accept(\"<CR>\")", { script = true, expr = true, silent = true, noremap = true })
+      local keymap = vim.keymap
+      local function opts(desc, args)
+        local defaults = { silent = true, noremap = true, desc = "Copilot: " .. desc }
+        return vim.tbl_deep_extend("force", defaults, args or {})
+      end
+
+      -- NOTE:
+      -- mapping the <leader> key in insert mode (e.g. <leader><tab>) affects
+      -- typing behavior (although <leader><tab> is a cool keybinding).
+      -- try these for now and change them in the future if needed:
+      local args = { expr = true, replace_keycodes = false }
+      keymap.set("i", "jj", 'copilot#Accept("<CR>")', opts("accept suggestion", args)) -- accept copilot suggestion
+      keymap.set("i", "jL", "<Plug>(copilot-next)", opts("next suggestion", {})) -- next copilot suggestion
+      keymap.set("i", "jH", "<Plug>(copilot-previous)", opts("prev suggestion", {})) -- don't use this, just use next to toggle
+      keymap.set("i", "jJ", "<Plug>(copilot-dismiss)", opts("dismiss suggestion", {})) -- dismiss copilot suggestion
+      keymap.set("i", "JJ", "<Plug>(copilot-suggest)", opts("suggest", {})) -- suggest copilot suggestion
     end,
   },
 }
