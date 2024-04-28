@@ -2,13 +2,12 @@
 
 ## TODOs:
 
-- [ ] maybe linting
-- [ ] formatting (black, etc..)
 - [ ] plugins
   - [ ] [faith/vim-go](https://github.com/fatih/vim-go) go support (not sure I need this on top of lsp)
-  - [ ] [copilot](https://github.com/github/copilot.vim) github copilot integration
-- [ ] try open source solution for **Copilot**
-  - [ ] [llm.nvim](https://github.com/huggingface/llm.nvim) try this out as an alternative to copilot
+  - [ ] **Copilot**
+    - [copilot](https://github.com/github/copilot.vim) official plugin (does not have nice integration with **cmp**)
+    - [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua?ref=tamerlan.dev) unofficial, might be better
+    - [ ] [llm.nvim](https://github.com/huggingface/llm.nvim) alternative to copilot
 
 ## all plugins
 
@@ -135,6 +134,8 @@ _( on nvim-tree attach )_
 - `a` - **create** a new file
 - `<leader>en` set **root** to **current node**
 - `<leader>ep` set **root** to **parent node**
+- `<leader>` + `v`, `x`, `t` open **vertical**, **horizontal**, **tab** _(close **tree-buffer**)_
+- `<C>` + `v`, `x`, `t` open **vertical**, **horizontal**, **tab** _(keep focus on **tree-buffer**)_
 
 #### telescope
 
@@ -186,7 +187,7 @@ _(navigate autocomplete popups)_
 - `<CR>` - **confirm** selection
 - `<leader>FF` - format current buffer with **conform**
 
-#### **lsp keybindings**
+#### lsp keybindings
 
 _(only available when an **lsp client** is attached to the current **buffer**)_
 
@@ -206,7 +207,7 @@ _(only available when an **lsp client** is attached to the current **buffer**)_
 
 ## Notes
 
-#### **mason** _( installs and manages **language servers** )_
+#### mason _( installs and manages **language servers**, **formatters**, etc... )_
 
 - **installed servers**:
   `cssls`
@@ -225,15 +226,15 @@ _(only available when an **lsp client** is attached to the current **buffer**)_
   [`prettier`](https://github.com/prettier/prettier)
   [`stylua`](https://github.com/JohnnyMorganz/StyLua)
 
-- add a new server:
+- add a new **language server**/ **formatter**:
   1. `:Mason` open up **mason ui**
   2. browse available language servers
   3. add server name to **ensure_installed** in [mason config]("./lua/svdro/plugins/lsp/mason.lua")
   4. should automatically get installed on restart
 
-### Lazy
+#### lazy.nvim _( plugin manager )_
 
-- plugins are stored at `~/.local/share/nvim/lazy/`
+- plugins should be stored at `~/.local/share/nvim/lazy/`
 - otherwise check: `:echo &runtimepath`
 - include **lazy-lock.json** in version control
 - `:Lazy restore` updates all plugins to the version from the lockfile

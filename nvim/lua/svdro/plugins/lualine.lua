@@ -23,7 +23,6 @@ local function set_lualine_theme(name)
   lualine.setup({ options = { theme = theme } })
 end
 
-
 local function switch_lualine_theme()
   local current_theme = vim.g.colors_name
 
@@ -41,7 +40,6 @@ local function switch_lualine_theme()
     print("there's no preset lualine theme for ", current_theme, ", setting to auto")
     set_lualine_theme("auto")
   end
-
 end
 
 -- automatically switch lualine themes when colorthemes are changed.

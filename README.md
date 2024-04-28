@@ -1,30 +1,52 @@
 # dotfiles
 
-## nvim
+### nvim
 
-### Plugins
+dependencies:
 
- * language servers:
-   * pyright: `pip install pyright`
-   * tsserver: `npm install -g typescript-language-server typescript`
-   * gopls: (comes with go)
-   * sumneko_lua: `brew install lua-language-server`
- * code formatting (null-ls):
-   * black `pip install black`
-   * prettier `npm i prettier` (does not work)
-   * gofmt (comes with go)
-   * stylua `brew install stylua`
- * for pictograms in cmp popups to work, install a [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) font.
- * for Treesitter (syntax highlighting) to enable all languages ->  :TSInstall all
+- **ripgrep**
+  - arch: `sudo pacman -S ripgrep`
+  - macos: `brew install ripgrep`
 
-### TODO:
-  * [ ] Null-ls: get prettier to work for js.
-  * [ ] Diagnostics: figure out how to ignore individual error messages.
-  * [ ] Telescope: give a little more love to Telescope config.
-  * [ ] create key map for reloading language server.
-    * look at `:h lsp-faq`
+setup:
 
-## alacritty
+- clone this repo and copy the **nvim** folder to the **.config** dir
 
- * if ~/.config/alacritty is a symlink, live reload config does not work. Restart after changing "alacritty.yml".
- * install [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) font.
+  ```
+  cd ~
+  git clone https://github.com/svdro/dotfiles/tree/main
+  mv ~/dotfiles/nvim ~/.config/nvim
+  ```
+
+- or create a **symlink** symlink
+
+  ```
+  ln -s ~/dotfiles/nvim ~/.config/nvim
+  ```
+
+- open nvim
+
+  ```
+  cd ~/config/nvim
+  nvim .
+  ```
+
+- wait for **Lazy** to install all packages and for **Mason** to setup all **language servers**,**formatters**, etc
+
+### alacritty
+
+setup:
+
+- clone this repo and copy the **alacritty** folder to the **.config** dir
+
+  ```
+  cd ~
+  git clone https://github.com/svdro/dotfiles/tree/main
+  mv ~/dotfiles/alacritty ~/.config/alacritty
+  ```
+
+- or create a **symlink** symlink
+
+  ```
+  ln -s ~/dotfiles/alacritty ~/.config/alacritty
+  ```

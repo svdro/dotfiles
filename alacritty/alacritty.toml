@@ -2,8 +2,8 @@
 # - "https://github.com/alacritty/alacritty-theme/tree/master/themes"
 # - create a new file per colorscheme, and import it here.
 import = [
-  "~/.config/alacritty/gruvbox_material.toml"
-  #"~/.config/alacritty/tokyonight_storm.toml"
+  #"~/.config/alacritty/gruvbox_material.toml"
+  "~/.config/alacritty/tokyonight.toml"
 ]
 
 [env]
