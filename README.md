@@ -4,7 +4,7 @@
 
 setup:
 
-- clone this repo and copy the **alacritty** folder to the **.config** dir
+- clone this repo and copy the **alacritty** folder to the `.config` dir
 
   ```bash
   cd ~
@@ -19,6 +19,15 @@ setup:
   ```
 
 ### tmux
+
+dependencies (_macOS_):
+
+- **reattach-to-user-namespace** _(clipboard management for macOS)_ <br>
+  ```bash
+  brew install reattach-to-user-namespace
+  ```
+
+setup:
 
 - clone this repo and copy the **.tmux.conf** file to the home dir
   ```bash
@@ -47,9 +56,18 @@ setup:
 
 dependencies:
 
-- **ripgrep**
-  - arch: `sudo pacman -S ripgrep`
-  - macos: `brew install ripgrep`
+- **ripgrep** _(search within files efficiently)_ <br>
+  **Arch Linux**:
+
+  ```bash
+  sudo pacman -S ripgrep
+  ```
+
+  **macOS**:
+
+  ```bash
+  brew install ripgrep
+  ```
 
 setup:
 
