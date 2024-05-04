@@ -4,8 +4,9 @@ return {
   "nvim-lua/plenary.nvim", -- collection of lua functions that many other plugins use
 
   -- colorschemes
-  { "folke/tokyonight.nvim", opts = { style = "storm" }, priority = 1002 }, -- tokyonight colorscheme
-  { "gruvbox-community/gruvbox", priority = 1001 }, -- gruvbox colorscheme
+  { "folke/tokyonight.nvim", opts = { style = "storm" }, priority = 1000 }, -- tokyonight colorscheme
+  { "gruvbox-community/gruvbox", priority = 1000 }, -- gruvbox colorscheme
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 }, -- cattpuccin colorscheme
 
   -- dressing ( provides an improved ui for some of nvims core functionality )
   { "stevearc/dressing.nvim", event = "VeryLazy" },
@@ -45,6 +46,12 @@ return {
     },
   },
 
+  --vim-go (golang support)
+  {
+    "fatih/vim-go",
+    build = ":GoInstallBinaries", -- install gopls, etc when installing plugin
+  },
+
   -- copilot
   {
     "github/copilot.vim",
@@ -64,8 +71,14 @@ return {
       -- try these for now and change them in the future if needed:
       local args = { expr = true, replace_keycodes = false }
       keymap.set("i", "jj", 'copilot#Accept("<CR>")', opts("accept suggestion", args)) -- accept copilot suggestion
+      keymap.set("i", "jk", "<Plug>(copilot-accept-word)", opts("next suggestion", {})) -- next copilot suggestion
+      keymap.set("i", "jl", "<Plug>(copilot-accept-line)", opts("next suggestion", {})) -- next copilot suggestion
+
       keymap.set("i", "jL", "<Plug>(copilot-next)", opts("next suggestion", {})) -- next copilot suggestion
       keymap.set("i", "jH", "<Plug>(copilot-previous)", opts("prev suggestion", {})) -- don't use this, just use next to toggle
+      --keymap.set("i", "jL", "<Plug>(copilot-next)", opts("next suggestion", {})) -- next copilot suggestion
+      --keymap.set("i", "jH", "<Plug>(copilot-previous)", opts("prev suggestion", {})) -- don't use this, just use next to toggle
+
       keymap.set("i", "jJ", "<Plug>(copilot-dismiss)", opts("dismiss suggestion", {})) -- dismiss copilot suggestion
       keymap.set("i", "JJ", "<Plug>(copilot-suggest)", opts("suggest", {})) -- suggest copilot suggestion
     end,

@@ -7,6 +7,8 @@ local function set_lualine_theme(name)
   end
 
   -- 'auto' does not need to require anything
+  -- this essentially does:
+  -- lualine.options = { theme = name }
   if name == "auto" then
     lualine.setup({ options = { theme = name } })
     return
@@ -30,14 +32,9 @@ local function switch_lualine_theme()
   if current_theme == "gruvbox" then
     set_lualine_theme("lualine.themes.gruvbox-material")
 
-  -- handle 'tokyonight'
-  elseif current_theme == "tokyonight" then
-    --set_lualine_theme("lualine.themes.palenight")
-    set_lualine_theme("lualine.themes.nightfly")
-
-  -- handle other
+    -- handle other
   else
-    print("there's no preset lualine theme for ", current_theme, ", setting to auto")
+    --print("there's no preset lualine theme for ", current_theme, ", setting to auto")
     set_lualine_theme("auto")
   end
 end

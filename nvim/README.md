@@ -2,10 +2,7 @@
 
 ## TODOs:
 
-- [ ] plugins
-  - [ ] [faith/vim-go](https://github.com/fatih/vim-go) go support (not sure I need this on top of lsp)
-- [ ] **Copilot** replacement
-  - the official copilot plugin does not have nice integration with **cmp**
+- [ ] **Copilot** replacement (probably don't not worth the hassle)
   - [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua?ref=tamerlan.dev) unofficial, might be better
   - [llm.nvim](https://github.com/huggingface/llm.nvim) alternative to copilot
 
@@ -15,17 +12,21 @@
 
 - [nerdcommenter](https://github.com/preservim/nerdcommenter) comment functions so powerfull ...
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim) adds git decorations
-- [dressing](https://github.com/stevearc/dressing.nvim)
+- [treesitter](https://github.com/nvim-treesitter/nvim-treesitter) syntax highlighting
 - [copilot](https://github.com/github/copilot.vim) official plugin
-  better ui for some nvim core functionalities like **input** and **select** dialogue
+- [faith/vim-go](https://github.com/fatih/vim-go) go support
+  - installs binaries (`godef`, `goimports`, `gopls`, etc) at `g:go_bin_path`
+
+#### ui & themes
+
 - [tokyonight](https://github.com/folke/tokyonight.nvim) tokyonight colorscheme
 - [gruvbox](https://github.com/gruvbox-community) gruvbox colorscheme
-- [bufferline](https://github.com/akinsho/bufferline.nvim) make tab pages look nicer
+- [cattpuccin](https://github.com/catppuccin/nvim) catppuccin colorscheme
+- [dressing](https://github.com/stevearc/dressing.nvim) better ui for some nvim core functionalities like **input** and **select** dialogue
 - [lualine](https://github.com/nvim-lualine/lualine.nvim) status line for nvim
+- [bufferline](https://github.com/akinsho/bufferline.nvim) make tab pages look nicer
 - [which-key](https://github.com/folke/which-key.nvim) displays a popup with keybindings
-- [treesitter](https://github.com/nvim-treesitter/nvim-treesitter) syntax highlighting
-- [lukas-reineke/indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
-  adds indentation guides to nvim
+- [lukas-reineke/indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) adds indentation guides to nvim
 
 #### navigation
 
@@ -81,6 +82,7 @@ _( **lspconfig** is responsible for setting up the **nvim LSP client**)_
 
 #### other dependencies (not managed by lazy)
 
+- [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) patched fonts for icons
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
   - **telescope** uses this for `live_grep` and `grep_string`
   - `sudo pacman -S ripgrep`
@@ -92,13 +94,15 @@ _( **lspconfig** is responsible for setting up the **nvim LSP client**)_
 
 - `<C-o>` - move backward through **jump-list**
 - `<C-i>` - move forward through **jump-list**
-- `jk` _( in **insert mode** )_ - exit insert mode
+- `kj` _( in **insert mode** )_ - exit insert mode
 
 #### copilot
 
 _( these are all in **insert mode** )_
 
 - `jj` - **accept** suggestion
+- `jk` - **accept** word
+- `jl` - **accept** line
 - `jJ` - **dismiss** suggestion
 - `JJ` - **make** suggestion _(e.g. after **dismiss**)_
 - `jL` - **next** suggestion
@@ -214,7 +218,7 @@ _(only available when an **lsp client** is attached to the current **buffer**)_
 - `gr` - fuzzy find **lsp references** _(item under cursor)_
 - `gi` - fuzzy find **lsp implementations** _(item under cursor)_
 - `gd` - fuzzy find **lsp definition** _(item under cursor)_
-- `gt` - fuzzy find **lsp type definition** _(item under cursor)_
+- `gT` - fuzzy find **lsp type definition** _(item under cursor)_
 - `<leader>db` - **find disgnostics** _(in current buffer)_
 
 ## Notes
