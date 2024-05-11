@@ -56,10 +56,14 @@ setup:
 
 dependencies:
 
-- **ripgrep** _(search within files efficiently)_ <br>
+- **nerd-fonts** _(icons for everything basically)_ <br>
   **Arch Linux**:
 
   - check out the [nerd-fonts repo](https://archlinux.org/groups/any/nerd-fonts/) or [Arch Extra packages](https://archlinux.org/groups/any/nerd-fonts/)
+
+  ```bash
+  sudo pacman -S ttf-hack-nerd
+  ```
 
   **macOS**:
 
@@ -116,16 +120,17 @@ setup:
 
 ### issues
 
-there is a bug related to `nvim`, `telescope`, `tmux` that causes nvim to crash.
-the bug is very difficule to reproduce, as it seems to depend on the exact state
-of the `working directory` (e.g. if _one line_ in _cwd_ is changed, the bug might not happen).
+there is a bug related to `nvim`, `telescope`, `tmux` that causes nvim to crash
+on macOS. The bug is difficult to reproduce, as it seems to depend on the exact
+state of the `working directory` (e.g. if _one line_ in _cwd_ is changed, the
+bug might not happen).
 
-- it seems to happen randomly when:
+- seems to happen randomly when:
 
   - using `telescope` to search for files
   - `suspending` and then `foregrounding` nvim (e.g. `ctrl+z` and `fg` in `tmux`)
 
-- it doesn't seem to happen outside of `tmux`
+- doesn't seem to happen outside of `tmux`
 
 - nvim log:
 

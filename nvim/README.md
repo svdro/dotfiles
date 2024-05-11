@@ -247,6 +247,8 @@ _(only available when an **lsp client** is attached to the current **buffer**)_
   2. browse available language servers
   3. add server name to **ensure_installed** in [mason config]("./lua/svdro/plugins/lsp/mason.lua")
   4. should automatically get installed on restart
+- language servers should be installed in `~/.local/share/nvim/mason/packages/`
+- otherwise check: `:lua print(vim.api.nvim_call_function("stdpath", { "data" }) )`
 
 #### lazy.nvim _( plugin manager )_
 
