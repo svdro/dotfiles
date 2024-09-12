@@ -1,7 +1,8 @@
 local opt = vim.opt -- alias vim.opt
 
 -- colorscheme (assuming colorschemes are installed)
-vim.cmd([[colorscheme catppuccin-macchiato]]) -- or tokyonight or gruvbox
+--vim.cmd([[colorscheme catppuccin-macchiato]]) -- or tokyonight or gruvbox
+vim.cmd([[colorscheme tokyonight-night]]) -- or tokyonight or gruvbox
 
 -- general
 --opt.updatetime = 50 -- ms nothing is typed before swap file is written to disk

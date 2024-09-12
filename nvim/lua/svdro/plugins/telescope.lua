@@ -43,7 +43,8 @@ local telescope_config = {
     local telescope = require("telescope")
     local actions = require("telescope.actions")
     local builtin = require("telescope.builtin")
-    local trouble = require("trouble.providers.telescope")
+    --local trouble = require("trouble.providers.telescope")
+    local trouble = require("trouble.sources.telescope")
 
     -- do telescope setup
     -- NOTE: there is an edgecase in which nvim crashes when both prompt_prefix
@@ -61,14 +62,14 @@ local telescope_config = {
             ["<C-j>"] = actions.move_selection_next,
             ["<Tab>"] = actions.move_selection_worse,
             ["<S-Tab>"] = actions.move_selection_better,
-            ["<leader>xx"] = trouble.open_with_trouble,
+            ["<leader>xx"] = trouble.open,
           },
           n = {
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-j>"] = actions.move_selection_next,
             ["<Tab>"] = actions.move_selection_worse,
             ["<S-Tab>"] = actions.move_selection_better,
-            ["<leader>xx"] = trouble.open_with_trouble,
+            ["<leader>xx"] = trouble.open,
           },
         },
       },
