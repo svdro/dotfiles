@@ -42,6 +42,7 @@ wo.foldexpr = "nvim_treesitter#foldexpr()"
 wo.foldlevel = 99
 opt.foldopen:remove("block")
 opt.foldopen:remove("search")
+opt.foldopen:remove("insert")
 
 -- other
 --vim.cmd("let g:netrw_liststyle = 3")    -- setup nvim file explorer to use tree style
