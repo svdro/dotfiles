@@ -159,7 +159,7 @@
       "space a m": "assistant::ToggleModelSelector",
       "space a h": "assistant::DeployHistory",
       "space a r": "assistant::CycleMessageRole",
-      "space a n": "workspace::NewFile" // open a new context
+      "space a n": "assistant::NewContext"
     }
   },
 

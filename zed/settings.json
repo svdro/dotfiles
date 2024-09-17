@@ -31,6 +31,12 @@
     "dark": "Tokyo Night"
   },
 
+  // fonts
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "buffer_font_family": "Hack Nerd Font",
+  "buffer_line_height": { "custom": 1.5 },
+
   // editor
   "vim_mode": true,
   "cursor_blink": false,
@@ -41,11 +47,23 @@
   "use_autoclose": false, // auto-close brackets, parentheses, etc.
   "use_auto_surround": false, // auto-surround selected text with brackets, parentheses, etc.
 
-  // fonts & themes
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
-  "buffer_font_family": "Hack Nerd Font",
-  "buffer_line_height": { "custom": 1.5 },
+  // aliases
+  "command_aliases": {
+    "vs": "pane: split right",
+    "split": "pane: split down"
+  },
+
+  "vim": {
+    "use_system_clipboard": "never",
+    "use_multiline_find": true, // Let `f` and `t` motions extend across multiple lines
+    "use_smartcase_find": false, // Let `f` and `t` are case-insensitive if true
+    "toggle_relative_line_numbers": false, // relative in normal, absolute in insert if true
+
+    // Add custom digraphs (e.g. ctrl-k f z will insert a zombie emoji)
+    "custom_digraphs": {
+      "fz": "🧟‍♀️"
+    }
+  },
 
   // completion
   "completion_documentation_secondary_query_debounce": 300,

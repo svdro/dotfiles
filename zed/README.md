@@ -17,6 +17,10 @@ ln -s ~/dotfiles/zed/settings.json ~/.config/zed/
 - [ ] search (figure out `pane: deploy search`)
 - [ ] comments (`copy` and `yank` keybinding)
 - [ ] keybindings don't work in **empty panes**
+- [ ] fix contexts that are currently ignored by keybindings
+  - [x] **EmptyPane**
+  - [ ] extensions _(what's the context)_
+- [ ] tasks - many of the features that are not easily implemented in zed can probably be done with tasks
 
 ## Notes
 
