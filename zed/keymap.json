@@ -1,14 +1,6 @@
 // Zed keymap
 
 [
-  // test contexts
-  {
-    "context": "Workspace",
-    "bindings": {
-      "u u": "command_palette::Toggle"
-    }
-  },
-
   // disable conflicting keybindings
   {
     "bindings": {
@@ -35,7 +27,7 @@
     }
   },
 
-  // navigation
+  // navigation (editor tabs)
   {
     "context": "VimControl && !menu || MarkdownPreview || Terminal",
     "bindings": {
@@ -49,6 +41,7 @@
     }
   },
 
+  // navigation (editor windows, docks)
   {
     // "context": "Workspace",
     "context": "VimControl && !menu || Dock || MarkdownPreview",
@@ -75,7 +68,7 @@
 
   // terminal
   {
-    "context": "VimControl && !menu || MarkdownPreview || Terminal || ProjectPanel",
+    "context": "VimControl && !menu || MarkdownPreview || Terminal || ProjectPanel || EmptyPane",
     "bindings": {
       // NOTE:
       // using space as a leader key in the terminal is impractical, since it makes
@@ -86,7 +79,6 @@
       "ctrl-z": "workspace::ToggleBottomDock" // toggle terminal
     }
   },
-
   {
     "context": "Terminal",
     "bindings": {
@@ -99,7 +91,7 @@
 
   // project panel
   {
-    "context": "VimControl && !menu || MarkdownPreview || Terminal || ProjectPanel",
+    "context": "VimControl && !menu || MarkdownPreview || Terminal || ProjectPanel || EmptyPane",
     "bindings": {
       "space e E": "workspace::ToggleLeftDock",
       "space e e": "project_panel::ToggleFocus"
@@ -115,10 +107,23 @@
     }
   },
 
+  // git
+  {
+    "context": "Editor && VimControl && !menu",
+    "bindings": {
+      "space h n": "editor::GoToHunk",
+      "space h p": "editor::GoToHunk",
+      "space h P": "editor::ToggleHunkDiff",
+      "space h d": "editor::ExpandAllHunkDiffs",
+      "space h r": "editor::RevertSelectedHunks",
+      "space h B": "editor::ToggleGitBlame",
+      "space h b": "editor::ToggleGitBlameInline"
+    }
+  },
+
   // comments
   {
     "context": "Editor && VimControl && !menu",
-    // "context": "Workspace",
     "bindings": {
       // nerd commenter
       "space c c": "vim::ToggleComments",
@@ -139,7 +144,7 @@
 
   // assistant
   {
-    "context": "Editor && VimControl && !menu || Terminal",
+    "context": "Editor && VimControl && !menu || Terminal || EmptyPane",
     "bindings": {
       "space a A": "workspace::ToggleRightDock",
       "space a a ": "assistant::ToggleFocus",
@@ -184,6 +189,15 @@
     }
   },
 
+  // telescope
+  {
+    "context": "VimControl && !menu || MarkdownPreview || ProjectPanel || EmptyPane",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+      "space f b": "tab_switcher::Toggle"
+    }
+  },
+
   // vim essentials
   {
     "context": "vim_mode == normal && !menu",
@@ -198,11 +212,7 @@
       // diagnostics
       "space d n": "editor::GoToDiagnostic",
       "space d p": "editor::GoToPrevDiagnostic",
-      "space d d": "diagnostics::Deploy",
-
-      // telescope
-      "space f f": "file_finder::Toggle",
-      "space f b": "tab_switcher::Toggle"
+      "space d d": "diagnostics::Deploy"
     }
   },
 

@@ -7,6 +7,8 @@ Global
 │
 ├── Workspace
 │   │
+│   ├── EmptyPane
+│   │
 │   ├── Pane
 │   │   ├── Editor
 │   │   ├── BufferSearchBar
