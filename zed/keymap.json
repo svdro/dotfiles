@@ -27,6 +27,15 @@
     }
   },
 
+  // multiple cursors
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-shift-k": "editor::AddSelectionAbove",
+      "ctrl-shift-j": "editor::AddSelectionBelow"
+    }
+  },
+
   // navigation (editor tabs)
   {
     "context": "VimControl && !menu || MarkdownPreview || Terminal",
@@ -63,29 +72,6 @@
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
       "ctrl-k": ["workspace::ActivatePaneInDirection", "Down"],
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Up"]
-    }
-  },
-
-  // terminal
-  {
-    "context": "VimControl && !menu || MarkdownPreview || Terminal || ProjectPanel || EmptyPane",
-    "bindings": {
-      // NOTE:
-      // using space as a leader key in the terminal is impractical, since it makes
-      // typing spaces awkward. Still, try this out for consistency with toggling the
-      // project and assistant panels.
-      "space t T": "workspace::ToggleBottomDock", // toggle terminal
-      "space t t": "terminal_panel::ToggleFocus",
-      "ctrl-z": "workspace::ToggleBottomDock" // toggle terminal
-    }
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      // the terminal doesn't have vim modes, so mapping the command pallette to ":"
-      // is impractical. Instead use key bindings that simulate vim commands (for muscle memory)
-      ": q enter": "pane::CloseActiveItem",
-      ": q ! enter": "pane::CloseActiveItem"
     }
   },
 
@@ -127,7 +113,10 @@
     "bindings": {
       // nerd commenter
       "space c c": "vim::ToggleComments",
-      "space c u": "vim::ToggleComments"
+      "space c u": "vim::ToggleComments",
+      // "space c y": ["vim::ToggleComments", "vim::YankLine"]
+      "space c y": ["vim::YankLine", "vim::ToggleComments"]
+      // "space c y": ["editor::ToggleComments", "editor::Copy"]
     }
   },
 
@@ -194,7 +183,8 @@
     "context": "VimControl && !menu || MarkdownPreview || ProjectPanel || EmptyPane",
     "bindings": {
       "space f f": "file_finder::Toggle",
-      "space f b": "tab_switcher::Toggle"
+      "space f b": "tab_switcher::Toggle",
+      "space f s": "pane::DeploySearch"
     }
   },
 
@@ -212,7 +202,10 @@
       // diagnostics
       "space d n": "editor::GoToDiagnostic",
       "space d p": "editor::GoToPrevDiagnostic",
-      "space d d": "diagnostics::Deploy"
+      "space d d": "diagnostics::Deploy",
+
+      // go to
+      "g r": "editor::FindAllReferences"
     }
   },
 
@@ -229,6 +222,43 @@
     "bindings": {
       ":": "command_palette::Toggle",
       "q": "pane::CloseActiveItem"
+    }
+  },
+
+  // tasks
+  // {
+  //   "context": "Workspace",
+  //   "bindings": {
+  //     "space s t": ["task::Spawn", { "task_name": "test" }]
+  //   }
+  // },
+
+  // terminal
+  {
+    "context": "VimControl && !menu || MarkdownPreview || Terminal || ProjectPanel || EmptyPane",
+    "bindings": {
+      // NOTE:
+      // using space as a leader key in the terminal is impractical, since it makes
+      // typing spaces awkward. Still, try this out for consistency with toggling the
+      // project and assistant panels.
+      "space t T": "workspace::ToggleBottomDock", // toggle terminal
+      "space t t": "terminal_panel::ToggleFocus",
+      "ctrl-z": "workspace::ToggleBottomDock" // toggle terminal
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      // reset space as leader key
+      "space": null,
+
+      // pseudo fg command in terminal to bring editor back into focus
+      "f g enter": "workspace::ToggleBottomDock",
+
+      // the terminal doesn't have vim modes, so mapping the command pallette to ":"
+      // is impractical. Instead use key bindings that simulate vim commands (for muscle memory)
+      ": q enter": "pane::CloseActiveItem",
+      ": q ! enter": "pane::CloseActiveItem"
     }
   }
 ]

@@ -28,37 +28,51 @@
   "theme": {
     "mode": "dark",
     "light": "Gruvbox Light",
-    "dark": "Tokyo Night"
+    "dark": "Catppuccin Mocha"
   },
 
   // fonts
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "buffer_font_family": "Hack Nerd Font",
-  "buffer_line_height": { "custom": 1.5 },
+  "buffer_line_height": {
+    "custom": 1.5
+  },
 
   // editor
   "vim_mode": true,
   "cursor_blink": false,
   "relative_line_numbers": true,
-  "scrollbar": { "show": "never" },
+  "scrollbar": {
+    "show": "never"
+  },
   "vertical_scroll_margin": 8,
-  "tab_bar": { "show": true }, // change this when comfortable with tabs
+  "tab_bar": {
+    "show": true
+  }, // change this when comfortable with tabs
   "use_autoclose": false, // auto-close brackets, parentheses, etc.
   "use_auto_surround": false, // auto-surround selected text with brackets, parentheses, etc.
+
+  // project panel
+  "project_panel": {
+    "button": true, // Whether to show the project panel button in the status bar
+    "default_width": 240, // doesn't seem to work
+    "git_status": true, // doesn't seem to work
+    "scrollbar": {
+      "show": "always"
+    }
+  },
 
   // aliases
   "command_aliases": {
     "vs": "pane: split right",
     "split": "pane: split down"
   },
-
   "vim": {
-    "use_system_clipboard": "never",
+    "use_system_clipboard": "always", // "never" doesn't seem to work with the "+" register
     "use_multiline_find": true, // Let `f` and `t` motions extend across multiple lines
-    "use_smartcase_find": false, // Let `f` and `t` are case-insensitive if true
+    "use_smartcase_find": true, // Let `f` and `t` are case-insensitive if true, search too!
     "toggle_relative_line_numbers": false, // relative in normal, absolute in insert if true
-
     // Add custom digraphs (e.g. ctrl-k f z will insert a zombie emoji)
     "custom_digraphs": {
       "fz": "🧟‍♀️"
@@ -75,11 +89,39 @@
     "default_height": 600, // Default height when the terminal is docked to the bottom.
     "font_family": "Hack Nerd Font",
     "font_size": 16,
-    "line_height": { "custom": 1.5 }
+    "line_height": {
+      "custom": 1.5
+    }
     // "line_height": "comfortable"
   },
 
-  // other
+  "diagnostics": {
+    "include_warnings": true
+  },
+
+  // formatting
+  "languages": {
+    "Go": {
+      "code_actions_on_format": {
+        "source.organizeImports": true
+      }
+    },
+    "Python": {
+      // "diagnostics": {
+      //   "include_warnings": true
+      // },
+      // "language_servers": ["pyright"],
+      "formatter": {
+        "external": {
+          // "command": "home/sven/.local/share/nvim/mason/packages/black",
+          "command": "black",
+          "arguments": ["--quiet", "-"]
+        }
+      },
+      "format_on_save": "on"
+    }
+  },
+
   "restore_on_startup": "none",
   "preferred_line_length": 80,
   "soft_wrap": "prefer_line", // "preferred_line_length"
