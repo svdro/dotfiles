@@ -1,7 +1,7 @@
 // Zed keymap
 
 [
-  // disable conflicting keybindings
+  // Disable conflicting keybindings
   {
     "bindings": {
       "shift-escape": null, // disable workspace::ToggleZoom
@@ -11,7 +11,7 @@
     }
   },
 
-  // tab key behavior
+  // Tab Key Behavior
   {
     "context": "Picker > Editor",
     "bindings": {
@@ -19,6 +19,7 @@
       "shift-tab": "menu::SelectPrev"
     }
   },
+
   {
     "context": "Editor && (showing_code_actions || showing_completions)",
     "bindings": {
@@ -27,33 +28,28 @@
     }
   },
 
-  // multiple cursors
+  // Navigation
   {
-    "context": "VimControl && !menu",
-    "bindings": {
-      "ctrl-shift-k": "editor::AddSelectionAbove",
-      "ctrl-shift-j": "editor::AddSelectionBelow"
-    }
-  },
-
-  // navigation (editor tabs)
-  {
-    "context": "VimControl && !menu || MarkdownPreview || Terminal",
+    "context": "VimControl && !menu || MarkdownPreview || KeyContextView",
     "bindings": {
       // navigate between tabs
       "space t n": "pane::ActivateNextItem",
-      "space t p": "pane::ActivatePrevItem"
+      "space t p": "pane::ActivatePrevItem",
+
+      // move tabs (vimium style)
+      "< <": "pane::SwapItemLeft",
+      "> >": "pane::SwapItemRight"
 
       // TODO: figure out what to do for "open tab" and "close tab" to make it feel intuitive
       // "space t o": ["workspace::NewFileInDirection", "Right"],
-      // "space t c": ["pane::CloseActiveItem", { "saveIntent": "skip" }],
+      // "space t c": ["pane::CloseActiveItem", { "saveIntent": "skip" }]
     }
   },
 
-  // navigation (editor windows, docks)
   {
-    // "context": "Workspace",
-    "context": "VimControl && !menu || Dock || MarkdownPreview",
+    // NOTE: normally Dock is a parent context of Terminal and AssistantPanel, but that doesn't seem to be the
+    // case in fullscreen mode, so we need to include them explicitly.
+    "context": "VimControl && !menu || Dock || MarkdownPreview || KeyContextView || Terminal || AssistantPanel",
     "bindings": {
       // toggle zoom
       "ctrl-w z": "workspace::ToggleZoom",
@@ -75,25 +71,74 @@
     }
   },
 
-  // project panel
+  // Copilot & Assistant
   {
-    "context": "VimControl && !menu || MarkdownPreview || Terminal || ProjectPanel || EmptyPane",
+    "context": "vim_mode == insert && inline_completion",
     "bindings": {
-      "space e E": "workspace::ToggleLeftDock",
-      "space e e": "project_panel::ToggleFocus"
-    }
-  },
-  {
-    "context": "ProjectPanel && not_editing",
-    "bindings": {
-      // "f2": "project_panel::Rename",
-      "r": "project_panel::Rename",
-      "a": "project_panel::NewFile",
-      "d": ["project_panel::Delete", { "skip_prompt": false }]
+      "alt-]": "editor::NextInlineCompletion",
+      "alt-[": "editor::PreviousInlineCompletion",
+      "j k": "editor::AcceptPartialInlineCompletion",
+      "j j": "editor::AcceptInlineCompletion"
     }
   },
 
-  // git
+  {
+    "context": "Editor && VimControl && !menu || EmptyPane",
+    "bindings": {
+      "space a A": "workspace::ToggleRightDock",
+      "space a a ": "assistant::ToggleFocus",
+      "space a q": "assistant::QuoteSelection", // TODO: move this to a different context
+      "space a I": "assistant::InlineAssist"
+    }
+  },
+
+  {
+    "context": "ContextEditor > Editor && VimControl && !menu",
+    "bindings": {
+      // "ctrl-k l": "assistant::DeployPromptLibrary",
+      "space a m": "assistant::ToggleModelSelector",
+      "space a h": "assistant::DeployHistory",
+      "space a r": "assistant::CycleMessageRole",
+      "space a n": "assistant::NewContext"
+    }
+  },
+
+  {
+    "context": "AssistantPanel > Pane > Picker > Editor",
+    "bindings": {
+      "escape": ["pane::CloseActiveItem", { "saveIntent": "skip" }]
+    }
+  },
+
+  // Search
+  {
+    "context": "VimControl && !menu || MarkdownPreview || ProjectPanel || EmptyPane",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+      "space f b": "tab_switcher::Toggle",
+      "space f s": "pane::DeploySearch"
+    }
+  },
+
+  {
+    "context": "ProjectSearchBar",
+    "bindings": {
+      "escape": ["pane::CloseActiveItem", { "saveIntent": "skip" }]
+    }
+  },
+
+  // Excerpts (eg. project search or diagnostics show multiple files in excerpts)
+  {
+    "context": "Editor && VimControl && !menu",
+    "bindings": {
+      "g space": "editor::OpenExcerpts", // this is the default binding in vim mode
+      "shift-enter": "editor::ExpandExcerpts", // this is the default binding
+      "space space k": "editor::ExpandExcerptsUp",
+      "space space j": "editor::ExpandExcerptsDown"
+    }
+  },
+
+  // Git
   {
     "context": "Editor && VimControl && !menu",
     "bindings": {
@@ -107,88 +152,28 @@
     }
   },
 
-  // comments
+  // Comments (nerd commenter)
   {
     "context": "Editor && VimControl && !menu",
     "bindings": {
       // nerd commenter
       "space c c": "vim::ToggleComments",
       "space c u": "vim::ToggleComments",
-      // "space c y": ["vim::ToggleComments", "vim::YankLine"]
-      "space c y": ["vim::YankLine", "vim::ToggleComments"]
-      // "space c y": ["editor::ToggleComments", "editor::Copy"]
+      "space c p": "editor::Copy", // workaround because yank deselects the text in visual mode
+      "space c y": ["workspace::SendKeystrokes", "space c p space c c"]
     }
   },
 
-  // copilot
+  // Multiple Cursors
   {
-    "context": "vim_mode == insert && inline_completion",
+    "context": "VimControl && !menu",
     "bindings": {
-      "alt-]": "editor::NextInlineCompletion",
-      "alt-[": "editor::PreviousInlineCompletion",
-      "j k": "editor::AcceptPartialInlineCompletion",
-      "j j": "editor::AcceptInlineCompletion"
+      "ctrl-shift-k": "editor::AddSelectionAbove",
+      "ctrl-shift-j": "editor::AddSelectionBelow"
     }
   },
 
-  // assistant
-  {
-    "context": "Editor && VimControl && !menu || Terminal || EmptyPane",
-    "bindings": {
-      "space a A": "workspace::ToggleRightDock",
-      "space a a ": "assistant::ToggleFocus",
-      "space a q": "assistant::QuoteSelection", // TODO: move this to a different context
-      "space a I": "assistant::InlineAssist"
-    }
-  },
-  {
-    "context": "ContextEditor > Editor && VimControl && !menu",
-    "bindings": {
-      // "ctrl-k l": "assistant::DeployPromptLibrary",
-      "space a m": "assistant::ToggleModelSelector",
-      "space a h": "assistant::DeployHistory",
-      "space a r": "assistant::CycleMessageRole",
-      "space a n": "assistant::NewContext"
-    }
-  },
-
-  // search issues
-  // NOTE: there is a bug with search in AssistantPanel. Nothing we can do
-  {
-    "context": "ContextEditor > Editor && VimControl && !menu",
-    "bindings": {
-      "/": "buffer_search::Deploy",
-      "space a i": "assistant::InsertIntoEditor" // TODO: move this to a different context
-    }
-  },
-  {
-    "context": "AssistantPanel > Pane > BufferSearchBar && !in_replace",
-    "bindings": {
-      "P": "vim::SearchSubmit",
-      "escape": "buffer_search::Dismiss",
-      "ctrl-g": "search::SelectNextMatch",
-      "ctrl-shift-g": "search::SelectPrevMatch"
-    }
-  },
-  {
-    "context": "ContextEditor > Editor && vim_mode == normal",
-    // "context": "vim_mode == normal",
-    "bindings": {
-      "space s s": "buffer_search::Deploy"
-    }
-  },
-
-  // telescope
-  {
-    "context": "VimControl && !menu || MarkdownPreview || ProjectPanel || EmptyPane",
-    "bindings": {
-      "space f f": "file_finder::Toggle",
-      "space f b": "tab_switcher::Toggle",
-      "space f s": "pane::DeploySearch"
-    }
-  },
-
-  // vim essentials
+  // Misc Vim Keybindings
   {
     "context": "vim_mode == normal && !menu",
     "bindings": {
@@ -198,6 +183,7 @@
       "space r n": "editor::Rename",
       "space p": "outline::Toggle",
       "space v": "editor::GoToDefinitionSplit",
+      "g D": "editor::GoToDefinitionSplit", // maybe this is more intuitive
 
       // diagnostics
       "space d n": "editor::GoToDiagnostic",
@@ -209,14 +195,45 @@
     }
   },
 
-  // markdown preview
   {
     "context": "VimControl && !menu",
     "bindings": {
-      // "space M D": "markdown::OpenPreviewToTheSide",
+      // tree-sitter (see which one is better)
+      "g k": "editor::SelectLargerSyntaxNode",
+      "g j": "editor::SelectSmallerSyntaxNode",
+      "space k": "editor::SelectLargerSyntaxNode",
+      "space j": "editor::SelectSmallerSyntaxNode"
+    }
+  },
+
+  // Project Panel
+  {
+    "context": "VimControl && !menu || MarkdownPreview || ProjectPanel || EmptyPane",
+    "bindings": {
+      "space e E": "workspace::ToggleLeftDock",
+      "space e e": "project_panel::ToggleFocus"
+    }
+  },
+
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      // "f2": "project_panel::Rename",
+      "r": "project_panel::Rename",
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "d": ["project_panel::Delete", { "skip_prompt": false }]
+    }
+  },
+
+  // Markdown Preview
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
       "space m d": "markdown::OpenPreview"
     }
   },
+
   {
     "context": "MarkdownPreview",
     "bindings": {
@@ -225,32 +242,33 @@
     }
   },
 
-  // tasks
-  // {
-  //   "context": "Workspace",
-  //   "bindings": {
-  //     "space s t": ["task::Spawn", { "task_name": "test" }]
-  //   }
-  // },
-
-  // terminal
+  // Terminal ( must be last to override other bindings )
   {
-    "context": "VimControl && !menu || MarkdownPreview || Terminal || ProjectPanel || EmptyPane",
     "bindings": {
-      // NOTE:
-      // using space as a leader key in the terminal is impractical, since it makes
-      // typing spaces awkward. Still, try this out for consistency with toggling the
-      // project and assistant panels.
-      "space t T": "workspace::ToggleBottomDock", // toggle terminal
-      "space t t": "terminal_panel::ToggleFocus",
       "ctrl-z": "workspace::ToggleBottomDock" // toggle terminal
     }
   },
+
+  {
+    "context": "VimControl && !menu || MarkdownPreview || ProjectPanel || ContextEditor > Editor && VimControl && !menu || EmptyPane",
+    "bindings": {
+      "space t T": "workspace::ToggleBottomDock", // toggle terminal
+      "space t t": "terminal_panel::ToggleFocus" // focus terminal
+    }
+  },
+
   {
     "context": "Terminal",
     "bindings": {
       // reset space as leader key
       "space": null,
+
+      // tmux-like key bindings
+      "ctrl-b c": "workspace::NewTerminal",
+      "ctrl-b n": "pane::ActivateNextItem",
+      "ctrl-b p": "pane::ActivatePrevItem",
+      "ctrl-b x y": "pane::CloseActiveItem",
+      "ctrl-b d": "workspace::ToggleBottomDock",
 
       // pseudo fg command in terminal to bring editor back into focus
       "f g enter": "workspace::ToggleBottomDock",

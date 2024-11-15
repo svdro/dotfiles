@@ -1,5 +1,7 @@
 # Contexts
 
+- to see what context you're in type "debug: open key context view" in the command palette
+
 ## Context Hierarchy
 
 ```
@@ -12,6 +14,7 @@ Global
 │   ├── Pane
 │   │   ├── Editor
 │   │   ├── BufferSearchBar
+│   │   ├── KeyContextView
 │   │   └── MarkdownPreview
 │   │
 │   └── Dock

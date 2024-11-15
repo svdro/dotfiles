@@ -7,7 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
-  // assistant
+  // Assistant Settings
   "assistant": {
     "default_model": {
       "provider": "copilot_chat",
@@ -18,72 +18,80 @@
     "default_width": 1200
   },
 
-  // telemetry
+  // Telemetry Settings
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
 
-  // theme
+  // Theme Settings
   "theme": {
     "mode": "dark",
     "light": "Gruvbox Light",
     "dark": "Catppuccin Mocha"
   },
 
-  // fonts
+  // Font Settings
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "buffer_font_family": "Hack Nerd Font",
-  "buffer_line_height": {
-    "custom": 1.5
-  },
+  "buffer_line_height": { "custom": 1.5 },
 
-  // editor
+  // Editor Settings
   "vim_mode": true,
   "cursor_blink": false,
   "relative_line_numbers": true,
-  "scrollbar": {
-    "show": "never"
-  },
+  "scrollbar": { "show": "never" },
   "vertical_scroll_margin": 8,
-  "tab_bar": {
-    "show": true
-  }, // change this when comfortable with tabs
+  "tab_bar": { "show": true }, // change this when comfortable with tabs
   "use_autoclose": false, // auto-close brackets, parentheses, etc.
   "use_auto_surround": false, // auto-surround selected text with brackets, parentheses, etc.
+  "active_pane_modifiers": { "inactive_opacity": 0.5 }, // Opacity of the inactive panes. 0 means transparent, 1 means opaque.
 
-  // project panel
+  // Miscellaneous Settings
+  "restore_on_startup": "none", // never restore the last session
+  "preferred_line_length": 80,
+  "soft_wrap": "prefer_line", // "preferred_line_length"
+  "show_wrap_guides": true,
+  "private_files": [
+    "**/.env*",
+    "**/*.pem",
+    "**/*.key",
+    "**/*.cert",
+    "**/*.crt",
+    "**/secrets.yml"
+  ],
+
+  // Project Panel Settings
   "project_panel": {
-    "button": true, // Whether to show the project panel button in the status bar
+    "button": false, // Whether to show the project panel button in the status bar
     "default_width": 240, // doesn't seem to work
     "git_status": true, // doesn't seem to work
-    "scrollbar": {
-      "show": "always"
-    }
+    "scrollbar": { "show": "always" }
   },
 
-  // aliases
+  // Command Aliases
   "command_aliases": {
     "vs": "pane: split right",
     "split": "pane: split down"
   },
+
+  // Vim Settings
   "vim": {
-    "use_system_clipboard": "always", // "never" doesn't seem to work with the "+" register
+    "use_system_clipboard": "never", // "never" doesn't seem to work with the "+" register
     "use_multiline_find": true, // Let `f` and `t` motions extend across multiple lines
     "use_smartcase_find": true, // Let `f` and `t` are case-insensitive if true, search too!
     "toggle_relative_line_numbers": false, // relative in normal, absolute in insert if true
-    // Add custom digraphs (e.g. ctrl-k f z will insert a zombie emoji)
-    "custom_digraphs": {
-      "fz": "🧟‍♀️"
-    }
+    "custom_digraphs": { "fz": "🧟‍♀️" } // Add custom digraphs (e.g. ctrl-k f z will insert a zombie emoji)
   },
 
-  // completion
+  // Completion Settings
   "completion_documentation_secondary_query_debounce": 300,
   "auto_signature_help": true,
+  "inline_completions": { "disabled_globs": [".env"] }, // A list of globs representing files that inline completions should be disabled for.
+  "features": { "inline_completion_provider": "copilot" }, // Which inline completion provider to use.
 
-  // terminal
+  // Terminal Settings
   "terminal": {
     // "default_width": 640, // Default width when the terminal is docked to the left or right.
     "default_height": 600, // Default height when the terminal is docked to the bottom.
@@ -95,13 +103,22 @@
     // "line_height": "comfortable"
   },
 
+  // Diagnostics Settings
   "diagnostics": {
     "include_warnings": true
   },
 
-  // formatting
+  // REPL Settings
+  "jupyter": {
+    "kernel_selections": {
+      "python": "repl_env"
+    }
+  },
+
+  // Language Settings
   "languages": {
     "Go": {
+      "auto_indent_on_paste": false, // does not seem to work
       "code_actions_on_format": {
         "source.organizeImports": true
       }
@@ -120,18 +137,5 @@
       },
       "format_on_save": "on"
     }
-  },
-
-  "restore_on_startup": "none",
-  "preferred_line_length": 80,
-  "soft_wrap": "prefer_line", // "preferred_line_length"
-  "show_wrap_guides": true,
-  "private_files": [
-    "**/.env*",
-    "**/*.pem",
-    "**/*.key",
-    "**/*.cert",
-    "**/*.crt",
-    "**/secrets.yml"
-  ]
+  }
 }
