@@ -14,6 +14,13 @@ ln -s ~/dotfiles/zed/settings.json ~/.config/zed/
 ### dependencies
 
 - **python** _(for formatting)_ -> `black`
+- **cargo**
+  - `curl https://sh.rustup.rs -sSf | sh`
+  - `rustup self uninstall` to uninstall
+- **protols** - Protobuf Language Server
+  - [zed proto docs](https://zed.dev/docs/languages/proto)
+  - `cargo install protols`
+
 
 # TODO:
 

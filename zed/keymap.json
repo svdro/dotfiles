@@ -83,6 +83,13 @@
   },
 
   {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "j J": "editor::ShowInlineCompletion"
+    }
+  },
+
+  {
     "context": "Editor && VimControl && !menu || EmptyPane",
     "bindings": {
       "space a A": "workspace::ToggleRightDock",

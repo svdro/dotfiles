@@ -11,7 +11,7 @@
   "assistant": {
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "model": "claude-3-5-sonnet"
     },
     "version": "2",
     "dock": "right",
@@ -130,12 +130,38 @@
       // "language_servers": ["pyright"],
       "formatter": {
         "external": {
-          // "command": "home/sven/.local/share/nvim/mason/packages/black",
           "command": "black",
           "arguments": ["--quiet", "-"]
         }
       },
       "format_on_save": "on"
+    },
+    "Proto": {
+      "language_servers": ["ProtoLS"],
+      "format_on_save": "on",
+      "tab_size": 4,
+      "formatter": {
+        "external": {
+          "command": "clang-format",
+          "arguments": ["-style={IndentWidth: 4, ColumnLimit: 0}"]
+        }
+      }
     }
+  },
+
+  // LSP Settings
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python.analysis": {
+          "diagnosticMode": "workspace"
+          // "typeCheckingMode": "strict"
+        },
+        "python": {
+          "pythonPath": "/home/sven/miniconda3/bin/python"
+        }
+      }
+    }
+    // "protols": {}
   }
 }
