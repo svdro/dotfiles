@@ -1,0 +1,61 @@
+### =============== definitions =============================================
+
+set $mod Mod4
+set $mod2 Mod1
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term alacritty
+include /etc/sway/config-vars.d/*
+
+### =============== launcher ================================================
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu dmenu_path | wmenu | xargs swaymsg exec --
+
+### =============== outputs =================================================
+
+# wallpaper
+output * bg $HOME/.config/sway/images/wallpaper_animne1.jpg fill
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+# Clamshell mode for laptops (list outputs: swaymsg -t get_outputs)
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+
+# Manually enable/disable laptop screen in case of issues
+bindsym $mod+$mod2+e exec swaymsg output $laptop enable
+bindsym $mod+$mod2+d exec swaymsg output $laptop disable
+
+### =============== other ===================================================
+
+default_border pixel 5
+
+### =============== bar =====================================================
+
+bar {
+    position top
+    status_command i3status
+
+    colors {
+        background #1e1e2e  
+        statusline #cdd6f4 
+        separator  #585b70
+        
+        # class             border    backgr    text
+        focused_workspace   #cba6f7   #cba6f7   #1e1e2e 
+        active_workspace    #45475a   #45475a   #cdd6f4
+        inactive_workspace  #1e1e2e   #1e1e2e   #6c7086
+        urgent_workspace    #f38ba8   #f38ba8   #1e1e2e 
+        binding_mode       #1e1e2e   #f38ba8   #1e1e2e 
+    }
+}
+
+include $HOME/.config/sway/config.d/*
+include /etc/sway/config.d/*
