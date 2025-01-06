@@ -17,10 +17,11 @@ include /etc/sway/config-vars.d/*
 
 ### =============== launcher ================================================
 
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu dmenu_path | wmenu | xargs swaymsg exec --
+# Note: we're passing this to "swaymsg exec --" to ensure we're in the right workspace
+#
+#set $menu dmenu_path | wmenu | xargs swaymsg exec --
+set $toficonf $HOME/.config/sway/tofi/config
+set $menu tofi-drun --config $toficonf | xargs swaymsg exec --
 
 ### =============== outputs =================================================
 
@@ -39,6 +40,8 @@ bindsym $mod+$mod2+d exec swaymsg output $laptop disable
 
 ### =============== other ===================================================
 
+##client.focused <border> <background> <text> <indicator> <child_border>
+client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
 default_border pixel 5
 
 ### =============== bar =====================================================
@@ -73,9 +76,11 @@ bar {
 # Lock and turn off the screen when idle
 exec swayidle -w \
     timeout 300 "swaylock -fFek -i $lockscreen" \
-    timeout 1800 'swaymsg "output * dpms off"' \
-      resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f -i $lockscreen'
+
+    # Note: this currently crashes the system after a while. debug later
+    #timeout 1800 'swaymsg "output * dpms off"' \
+      #resume 'swaymsg "output * dpms on"' \
+    #before-sleep 'swaylock -f -i $lockscreen'
 
 
 # System mode

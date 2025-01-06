@@ -1,8 +1,22 @@
 # Sway config
 
+## TODO
+
+- [x] sway
+- [x] swaylock/swayidle
+- [x] wofi/rofi/tofi - tofi
+- [ ] waybar
+- [ ] notifications
+
 ## Dependencies
 
+- [sway](https://github.com/swaywm/sway)
+- [swaylock](https://github.com/swaywm/swaylock)
+- [swayidle](https://github.com/swaywm/swayidle)
+
+- [tofi](https://github.com/philj56/tofi)
 - [alacritty](https://github.com/alacritty/alacritty)
+
 - pactl/pauvcontrol
 - [playerctl](https://github.com/acrisci/playerctl)
 - [brightnessctl](https://github.com/Hummer12007/brightnessctl)
@@ -14,6 +28,8 @@
 ### Actions
 
 - **Mod + Return** - Open terminal
+- **Mod + Mod2 + Backspace** - system mode (lock, logout, suspend, reboot, shutdown)
+- **Mod + d** - Open tofi (app launcher)
 
 ### Workspace
 
