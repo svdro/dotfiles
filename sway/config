@@ -9,6 +9,10 @@ set $up k
 set $right l
 
 set $term alacritty
+
+set $wallpaper $HOME/.config/sway/images/wallpaper_animne1.jpg
+set $lockscreen $HOME/.config/sway/images/wallpaper_animne1.jpg
+
 include /etc/sway/config-vars.d/*
 
 ### =============== launcher ================================================
@@ -21,7 +25,7 @@ set $menu dmenu_path | wmenu | xargs swaymsg exec --
 ### =============== outputs =================================================
 
 # wallpaper
-output * bg $HOME/.config/sway/images/wallpaper_animne1.jpg fill
+output * bg $wallpaper fill
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 # Clamshell mode for laptops (list outputs: swaymsg -t get_outputs)
@@ -57,5 +61,46 @@ bar {
     }
 }
 
+### =============== system ==================================================
+
+# Lockscreen flags
+# -f daemonize
+# -F show failed attempts
+# -i image
+# -e ignore empty password
+# -k show keyboard layout
+
+# Lock and turn off the screen when idle
+exec swayidle -w \
+    timeout 300 "swaylock -fFek -i $lockscreen" \
+    timeout 1800 'swaymsg "output * dpms off"' \
+      resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -i $lockscreen'
+
+
+# System mode
+set $mode_system "System: (l) lock, (r) reboot, (CTRL+s) shutdown"
+#set $mode_system "System: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (CTRL+s) shutdown"
+
+mode $mode_system {
+    bindsym l exec swaylock -fFek -i $lockscreen, mode "default"
+    bindsym r exec systemctl reboot, mode "default"
+    bindsym Ctrl+s exec systemctl poweroff -i, mode "default"
+
+    ## Note: these currently crashes the system. debug later
+    #bindsym e exec swaymsg exit, mode "default"
+    #bindsym s exec swaylock -fFek -i $lockscreen && systemctl suspend, mode "default"
+    #bindsym h exec swaylock -fFek -i $lockscreen && systemctl hibernate, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+$mod2+BackSpace mode "default"
+}
+
+bindsym $mod+$mod2+BackSpace mode $mode_system
+
+
+### =============== influde =================================================
 include $HOME/.config/sway/config.d/*
 include /etc/sway/config.d/*
