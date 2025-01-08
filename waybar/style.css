@@ -1,0 +1,31 @@
+@import "styles/catppuccin_mocha.css";
+@import "styles/sway.css";
+@import "styles/center.css";
+@import "styles/right.css";
+@import "styles/tooltip.css";
+
+* {
+  font-family: FantasqueSansMono Nerd Font;
+  font-size: 14px;
+  min-height: 0;
+  /* color: @lavender; */
+}
+
+window.eDP-1 * {
+  font-size: 9px;
+}
+
+window#waybar {
+    background: @base;
+    /* background: shade(alpha(@base, 0.5), 1.25); */
+}
+
+window#waybar > * {
+    margin: 0.3em 0.5em;
+}
+
+
+window.eDP-1#waybar {
+    background-color: transparent;
+    /* background-color: shade(alpha(@base, 0.0), 1.0); */
+}

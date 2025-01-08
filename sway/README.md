@@ -1,19 +1,18 @@
 # Sway config
 
-## TODO
+## setup
 
-- [x] sway
-- [x] swaylock/swayidle
-- [x] wofi/rofi/tofi - tofi
-- [ ] waybar
-- [ ] notifications
+```bash
+# symlink the "dotfiles/sway" directory to "~/.config/"
+ln -s ~/dotfiles/sway ~/.config/
+```
 
-## Dependencies
+## dependencies
 
 - [sway](https://github.com/swaywm/sway)
 - [swaylock](https://github.com/swaywm/swaylock)
 - [swayidle](https://github.com/swaywm/swayidle)
-
+- [waybar](https://github.com/Alexays/Waybar?tab=readme-ov-file)
 - [tofi](https://github.com/philj56/tofi)
 - [alacritty](https://github.com/alacritty/alacritty)
 
@@ -23,15 +22,15 @@
   - NOTE: on some distros `sudo usermod -aG video $USER` is required to run brightnessctl without sudo
 - [grimshot](https://github.com/OctopusET/sway-contrib)
 
-## Keybindings
+## keybindings
 
-### Actions
+### actions
 
 - **Mod + Return** - Open terminal
 - **Mod + Mod2 + Backspace** - system mode (lock, logout, suspend, reboot, shutdown)
 - **Mod + d** - Open tofi (app launcher)
 
-### Workspace
+### workspace
 
 - **Mod + 1-9** - Switch to workspace 1-9
 - **Mod + Shift + 1-9** - Move focused container to workspace 1-9
@@ -43,3 +42,12 @@
 - **Mod + f** - Toggle fullscreen
 - **Mod + w** - tabbed layout
 - **Mod + e** - toggle split layout
+
+## TODO
+
+- [x] sway
+- [x] swaylock/swayidle
+- [x] wofi/rofi/tofi - tofi
+- [x] waybar
+- [ ] notifications
+- [ ] system wide dark mode

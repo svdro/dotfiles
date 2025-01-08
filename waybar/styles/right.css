@@ -1,0 +1,60 @@
+.modules-right { color: @lavender; }
+
+.modules-right > * {
+    background-color: @surface0;
+    border-radius: 1em;
+    margin-left: 1em;
+    padding: 0 1em;
+}
+
+#right-status *, #right-power *, #right-time * {
+    padding: 0.0em 0.5em;
+}
+
+#cpu {
+    min-width: 5em;
+    margin: -0.4em 0; /* stretch vertically */
+    margin: 0 -1.5em; /* counter min-width */
+}
+#cpu.normal { color: @yellow; }
+#cpu.warning { color: @peach; }
+#cpu.critical { color: @red; }
+
+#memory { margin: -0.4em 0; }
+#memory.warning { color: @peach; }
+#memory.critical { color: @red; }
+
+#disk {
+    margin: -0.4em 0;
+    border-right: 1px solid @surface1;
+}
+
+#network.disconnected { color: gray; }
+#network.ethernet { font-size: 1.4em; }
+#network.wifi { font-size: 1.2em; }
+#network.speed {
+    color: white;
+    font-size: 0.7em;
+    margin: -0.4em 0;
+    margin-left: 1em;
+    margin-right: -2em;
+    min-width: 7em;
+}
+
+#custom-vpn.connected { color: @green; }
+#custom-vpn.connecting { color: @yellow; }
+#custom-vpn.disconnected { color: @blue; }
+#custom-vpn.error { color: @red; }
+
+#pulseaudio { border-radius: 1em 0px 0px 1em; color: inherit; font-size: 1.1em}
+#pulseaudio.warning { color: @peach; }
+#pulseaudio.critical { color: @red; }
+
+#backlight { color: @yellow; font-size: 1.1em; }
+#bluetooth { font-size: 1.2em; }
+#clock { color: inherit; font-size: 1.2em; }
+
+#battery { color: gray; font-size: 1.2em; }
+#battery.full { color: @lavender; }
+#battery.charging { color: @green; }
+#battery.warning:not(.charging) { color: @red; }

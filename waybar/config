@@ -1,0 +1,162 @@
+{
+
+
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+
+    "group/right-status": {
+      "orientation": "inherit",
+      "modules": ["cpu", "memory", "disk", "network#speed", "network#ethernet", "network#wifi", "custom/vpn", ]
+    },
+
+    "group/right-power": {
+      "orientation": "inherit",
+      "modules": [ "pulseaudio", "backlight", "bluetooth", "battery"]
+    },
+
+    "group/right-time": {
+      "orientation": "inherit",
+      "modules": ["clock"]
+    },
+
+    "modules-left": ["sway/workspaces", "sway/scratchpad", "sway/window", "sway/mode"],
+    "modules-center": ["custom/music"],
+    "modules-right": ["group/right-status", "group/right-power", "group/right-time"],
+
+    "sway/workspaces": {
+         "disable-scroll": true,
+         "format": " {icon} ",
+         "format-icons": {
+				    "0": "",
+    				"1": "",
+						"2": "",
+						"3": "",
+						"4": "",
+						"5": "",
+						"6": "6",
+						"7": "7",
+						"8": "8",
+						"9": "9",
+						"default": "",
+        },
+     },
+
+     "sway/scratchpad": {
+         "format": "{icon}   {count}",
+         "show-empty": false,
+         "format-icons": ["", ""],
+         "tooltip": true,
+         "tooltip-format": "{app}"
+     },
+
+     "sway/window": {
+         "format": "{app_id}",
+         "format-alt": "{title}",
+         "max-length": 20,
+         "tooltip": true,
+         // "icon": true,
+         // "icon-size": 24
+     },
+
+     "sway/mode": {
+         "format": "<span style=\"italic\">{}</span>"
+     },
+
+
+    "network#ethernet": {
+      "interface": "en*",
+      "interval": 1,
+      "format-ethernet": "󰈁",
+      "format-disconnected": "󰈂",
+      "tooltip-format": "IP: {ipaddr}\n: {bandwidthUpBits}\t: {bandwidthDownBits}",
+    },
+
+    "network#wifi": {
+      "interface": "wl*",
+      "interval": 1,
+      "format-wifi": "󰖩  {essid}",
+      "format-disconnected": "󰖪 ",
+      "tooltip-format": "IP: {ipaddr}\n: {bandwidthUpBits}\t: {bandwidthDownBits}",
+    },
+
+   "network#speed": {
+      "interval": 1,
+      "format": "{bandwidthUpBits}\t\n{bandwidthDownBits}\t",
+      "tooltip-format": "IP: {ipaddr}\n: {bandwidthUpBits}\t: {bandwidthDownBits}",
+    },
+
+
+    "cpu": {
+        "interval": 1,
+        "format": "<span line_height='0.8'><span size='70%'>CPU</span>\n{usage}%</span>",
+        "states": { "normal": 10, "warning": 50, "critical": 90 },
+    },
+
+    "memory": {
+        "interval": 1,
+        "format": "<span line_height='0.8'><span size='70%'>MEM</span>\n{percentage}%</span>",
+        "states": { "warning": 50, "critical": 90 },
+    },
+
+    "disk": {
+      "interval": 1,
+      "format": "<span line_height='0.8'><span size='70%'>DISK</span>\n{percentage_used}%</span>",
+    },
+
+    "clock": {
+        "timezone": "Europe/Paris",
+        "format": "{:%H:%M}",
+        "format-alt": "{:%H:%M:%S}",
+        "tooltip-format": "{:%a, %d. %b  %H:%M}",
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "battery": {
+        "format": "{icon}",
+        "format-alt": "{capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        // "format-charging": ["󰂆", "󰂇", "󰂈", "󰂉", "󰂊", "󰂋", "󰂅"],
+        //"format-icons": ["⚡", "⚡", "🔋", "☻"]
+    },
+
+    "pulseaudio": {
+        "format": "{icon}   {volume}%",
+        "format-muted": "",
+        "format-icons": { "default": ["", "", " "] },
+        "states": { "dummy": 110, "warning": 131, "critical": 1000}, // states behave funny
+        "on-click": "pavucontrol"
+    },
+
+    "bluetooth": {
+      "format": "",
+      "format-connected": " {num_connections}",
+      "tooltip-format": "{controller_alias}\t{controller_address}",
+      "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+      "tooltip-format-enumerate-connected-battery": "{device_alias} ({device_battery_percentage}%)\t{device_address}",
+    },
+
+    "custom/music": {
+        "format": "{}",
+        "interval": 1,
+        "escape": true,
+        "tooltip": true,
+        "exec": "$HOME/.config/waybar/scripts/media.sh",
+        "on-click": "playerctl play-pause",
+        "max-length": 50
+    },
+
+    "custom/vpn": {
+        "format": "{}",
+        "interval": 1,
+        "tooltip": true,
+        "return-type": "json",
+        "exec": "$HOME/.config/waybar/scripts/mullvad.sh",
+        "on-click": "\"/opt/Mullvad VPN/mullvad-vpn\"",
+    },
+}

@@ -1,0 +1,14 @@
+.modules-center {
+    background-color: @surface0;
+    border-radius: 1em;
+}
+
+.modules-center widget * {
+  color: @lavender;
+  padding: 0 1em;
+}
+
+#custom-music {
+  /* color: @mauve; */
+  border-radius: 1em;
+}
