@@ -4,17 +4,19 @@
 #exec killall -SIGUSR1 waybar
 #exec waybar
 
-#exec {
-    ##gsettings set org.gnome.desktop.interface gtk-theme 'Your-Dark-Theme'
-    #gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-#}
-
-# exec {
-#     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-#     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+# set $gnome-schema org.gnome.desktop.interface
+# exec_always {
+#     # gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+#     gsettings set $gnome-schema color-scheme 'prefer-dark'
+#     # gsettings set $gnome-schema icon-theme 'Adwaita'
 # }
 
 ### =============== definitions =============================================
+
+# probably don't need this
+# include /etc/sway/config-vars.d/*
+
+include $HOME/.config/sway/themes/catppuccin_mocha
 
 set $mod Mod4
 set $mod2 Mod1
@@ -29,15 +31,22 @@ set $term alacritty
 set $wallpaper $HOME/.config/sway/images/wallpaper_animne1.jpg
 set $lockscreen $HOME/.config/sway/images/wallpaper_animne1.jpg
 
-include /etc/sway/config-vars.d/*
-
 ### =============== launcher ================================================
 
 # Note: we're passing this to "swaymsg exec --" to ensure we're in the right workspace
-#
-# set $menu dmenu_path | wmenu | xargs swaymsg exec --
+set $menu dmenu_path | wmenu -l 5 -b | xargs swaymsg exec --
+
 set $toficonf $HOME/.config/sway/tofi/config
-set $menu tofi-drun --config $toficonf | xargs swaymsg exec --
+set $tofifont "/usr/share/fonts/hack/HackNerdFontMono-Bold.ttf"
+set $tofi tofi-drun \
+    --config $toficonf \
+    --font $tofifont \
+    --selection-color  "$color_blue" \
+    --selection-match-color "$color_red" \
+    --text-color "$color_fg"
+
+# Note: we're passing this to "swaymsg exec --" to ensure we're in the right workspace
+set $drun $tofi | xargs swaymsg exec --
 
 ### =============== outputs =================================================
 
@@ -54,30 +63,30 @@ bindswitch --reload --locked lid:off output $laptop enable
 bindsym $mod+$mod2+e exec swaymsg output $laptop enable
 bindsym $mod+$mod2+d exec swaymsg output $laptop disable
 
-### =============== other ===================================================
+# put laptop screen on the correct side
+output $laptop pos 0 0 res 2880x1800
 
-##client.focused <border> <background> <text> <indicator> <child_border>
-client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
-default_border pixel 5
+### =============== appearance ==============================================
+#
+# client.focused        $lavender         $lavender         $base            $base            $lavender
+client.focused          $color_blue     $color_bg_lighter $color_fg        $color_blue    $color_blue
+client.focused_inactive $color_bg_lighter $color_bg_light   $color_fg_dim    $color_bg_lighter $color_bg_lighter
+client.unfocused        $color_bg_light   $color_bg_main    $color_fg_dimmer $color_bg_light  $color_bg_light
+client.urgent           $color_red    $color_bg_light   $color_fg        $color_red   $color_red
+
+# client.focused $lavender $lavender $base $base $lavender
+default_border pixel 2
+
+# gaps
+gaps inner 10
+gaps outer 0
+# smart_gaps on
 
 ### =============== bar =====================================================
 
 # bar {
 #     position top
 #     status_command i3status
-
-#     colors {
-#         background #1e1e2e
-#         statusline #cdd6f4
-#         separator  #585b70
-
-#         # class             border    backgr    text
-#         focused_workspace   #cba6f7   #cba6f7   #1e1e2e
-#         active_workspace    #45475a   #45475a   #cdd6f4
-#         inactive_workspace  #1e1e2e   #1e1e2e   #6c7086
-#         urgent_workspace    #f38ba8   #f38ba8   #1e1e2e
-#         binding_mode       #1e1e2e   #f38ba8   #1e1e2e
-#     }
 # }
 
 bar swaybar_command waybar

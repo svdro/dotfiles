@@ -16,8 +16,8 @@ window.eDP-1 * {
 }
 
 window#waybar {
-    background: @base;
-    /* background: shade(alpha(@base, 0.5), 1.25); */
+    /* background: @base; */
+    background: shade(alpha(@base, 0.0), 1.0);
 }
 
 window#waybar > * {
