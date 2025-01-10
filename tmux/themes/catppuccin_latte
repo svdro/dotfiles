@@ -1,0 +1,41 @@
+# vim:set ft=tmux:
+
+# original colors
+BG="#eff1f5"
+FG="#4c4f69"
+
+ROSEWATER="#dc8a78"
+FLAMINGO="#dd7878"
+PINK="#ea76cb"
+MAUVE="#8839ef"
+RED="#d20f39"
+MAROON="#e64553"
+PEACH="#fe640b"
+YELLOW="#df8e1d"
+GREEN="#40a02b"
+TEAL="#179299"
+SKY="#04a5e5"
+SAPPHIRE="#209fb5"
+BLUE="#1e66f5"
+LAVENDER="#7287fd"
+
+SUBTEXT_1="#6c6f85"
+SUBTEXT_0="#5c5f77"
+OVERLAY_2="#7c7f93"
+OVERLAY_1="#8c8fa1"
+OVERLAY_0="#9ca0b0"
+SURFACE_2="#acb0be"
+SURFACE_1="#bcc0cc"
+SURFACE_0="#ccd0da"
+MANTLE="#e6e9ef"
+CRUST="#dce0e8"
+
+
+# export tmux colors
+set-environment -g @FG_WINDOW $OVERLAY_1
+set-environment -g @BG_WINDOW $SURFACE_1
+set-environment -g @FG_WINDOW_ACTIVE $LAVENDER
+set-environment -g @BG_WINDOW_ACTIVE $SURFACE_0
+set-environment -g @BG_BAR $BG
+set-environment -g @TEXT $FG
+set-environment -g @TEXT_IMPORTANT $FG

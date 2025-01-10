@@ -18,40 +18,6 @@ setup:
   ln -s ~/dotfiles/alacritty ~/.config/alacritty
   ```
 
-### tmux
-
-dependencies (_macOS_):
-
-- **reattach-to-user-namespace** _(clipboard management for macOS)_ <br>
-  ```bash
-  brew install reattach-to-user-namespace
-  ```
-
-setup:
-
-- clone this repo and copy the **.tmux.conf** file to the home dir
-  ```bash
-  cd ~
-  git clone https://github.com/svdro/dotfiles.git
-  mv ~/dotfiles/.tmux.conf ~/.tmux.conf
-  ```
-- or create a **symlink** symlink
-
-  ```bash
-  ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
-  ```
-
-- if already running tmux, reload the config
-
-  ```bash
-  tmux source-file ~/.tmux.conf
-  ```
-
-- otherwise, start tmux
-  ```bash
-  tmux new
-  ```
-
 ### nvim
 
 dependencies:

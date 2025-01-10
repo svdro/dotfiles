@@ -1,0 +1,40 @@
+# original colors
+BG="#24273a"
+FG="#cad3f5"
+
+ROSEWATER="#f4dbd6"
+FLAMINGO="#f0c6c6"
+ROSEWATER="#f4dbd6"
+PINK="#f5bde6"
+MAUVE="#c6a0f6"
+RED="#ed8796"
+MAROON="#ee99a0"
+PEACH="#f5a97f"
+YELLOW="#eed49f"
+GREEN="#a6da95"
+TEAL="#8bd5ca"
+SKY="#91d7e3"
+SAPPHIRE="#7dc4e4"
+BLUE="#8aadf4"
+LAVENDER="#b7bdf8"
+
+SUBTEXT_1="#a5adcb"
+SUBTEXT_0="#b8c0e0"
+OVERLAY_2="#939ab7"
+OVERLAY_1="#8087a2"
+OVERLAY_0="#6e738d"
+SURFACE_2="#5b6078"
+SURFACE_1="#494d64"
+SURFACE_0="#363a4f"
+MANTLE="#1e2030"
+CRUST="#181926"
+
+
+# export tmux colors
+set-environment -g @FG_WINDOW $OVERLAY_1
+set-environment -g @BG_WINDOW $SURFACE_1
+set-environment -g @FG_WINDOW_ACTIVE $LAVENDER
+set-environment -g @BG_WINDOW_ACTIVE $SURFACE_0
+set-environment -g @BG_BAR $BG
+set-environment -g @TEXT $FG
+set-environment -g @TEXT_IMPORTANT $FG
