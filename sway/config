@@ -92,6 +92,25 @@ gaps outer 0
 bar swaybar_command waybar
 
 
+### =============== notifications ===========================================
+
+# Ensure dunst is not running before starting swaync
+exec killall dunst; swaync
+
+# Notifications mode
+set $mode_notifications "Notifications: (c) clear all, (d) toggle dnd, (r) reload"
+
+mode $mode_notifications {
+    bindsym d exec swaync-client -d -sw
+    bindsym c exec swaync-client -C -sw
+    bindsym r exec swaync-client -R -sw; exec swaync-client -rs -sw
+    bindsym Escape exec swaync-client -cp -sw; mode "default"
+    bindsym $mod+Shift+n exec swaync-client -cp -sw; mode "default"
+}
+
+bindsym $mod+Shift+n mode $mode_notifications; exec swaync-client -op -sw
+
+
 ### =============== system ==================================================
 
 # Lockscreen flags

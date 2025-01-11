@@ -12,6 +12,7 @@ ln -s ~/dotfiles/sway ~/.config/
 - [sway](https://github.com/swaywm/sway)
 - [swaylock](https://github.com/swaywm/swaylock)
 - [swayidle](https://github.com/swaywm/swayidle)
+- [swaync](https://github.com/ErikReider/SwayNotificationCenter?tab=readme-ov-file#sway-usage)
 - [waybar](https://github.com/Alexays/Waybar?tab=readme-ov-file)
 - [tofi](https://github.com/philj56/tofi)
 - [alacritty](https://github.com/alacritty/alacritty)
@@ -49,5 +50,5 @@ ln -s ~/dotfiles/sway ~/.config/
 - [x] swaylock/swayidle
 - [x] wofi/rofi/tofi - tofi
 - [x] waybar
-- [ ] notifications
+- [x] notifications
 - [ ] system wide dark mode
