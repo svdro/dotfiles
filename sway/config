@@ -1,15 +1,14 @@
 ### =============== services ================================================
 
-#should this be first or last?
-#exec killall -SIGUSR1 waybar
-#exec waybar
+exec_always {
+    # dark theme (works for some applications)
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
-# set $gnome-schema org.gnome.desktop.interface
-# exec_always {
-#     # gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
-#     gsettings set $gnome-schema color-scheme 'prefer-dark'
-#     # gsettings set $gnome-schema icon-theme 'Adwaita'
-# }
+    # requires a custom desktop entry
+    # cp /usr/share/applications/firefox.desktop ~/.local/share/applications/firefox-private.desktop
+    xdg-settings set default-web-browser firefox-private.desktop
+}
 
 ### =============== definitions =============================================
 
@@ -43,7 +42,8 @@ set $tofi tofi-drun \
     --font $tofifont \
     --selection-color  "$color_blue" \
     --selection-match-color "$color_red" \
-    --text-color "$color_fg"
+    --text-color "$color_fg" \
+    --output $(~/.config/sway/scripts/active_output.sh)
 
 # Note: we're passing this to "swaymsg exec --" to ensure we're in the right workspace
 set $drun $tofi | xargs swaymsg exec --
@@ -56,6 +56,7 @@ output * bg $wallpaper fill
 
 # Clamshell mode for laptops (list outputs: swaymsg -t get_outputs)
 set $laptop eDP-1
+set $display1 DP-3
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
@@ -65,6 +66,7 @@ bindsym $mod+$mod2+d exec swaymsg output $laptop disable
 
 # put laptop screen on the correct side
 output $laptop pos 0 0 res 2880x1800
+output $display1 pos 2880 0 res 3840x2160
 
 ### =============== appearance ==============================================
 #

@@ -13,25 +13,55 @@ ln -s ~/dotfiles/zed/settings.json ~/.config/zed/
 
 ### dependencies
 
-- **python** _(for formatting)_ -> `black`
-- **cargo**
-  - `curl https://sh.rustup.rs -sSf | sh`
-  - `rustup self uninstall` to uninstall
-- **protols** - Protobuf Language Server
-  - [zed proto docs](https://zed.dev/docs/languages/proto)
-  - `cargo install protols`
+python
 
+- [zed docs python](https://zed.dev/docs/languages/python):
+- ensure **black** is installed in the base environment
 
-# TODO:
+protols:
 
-- [x] **python**, `formatting` (do I need to enable this or get an extension?)
-- [ ] file finder/ project panel (open files in new splits)
-- [x] search (figure out `pane: deploy search`)
-- [x] comments (`copy` and `yank` keybinding)
-- [ ] tasks
+- [zed docs proto](https://zed.dev/docs/languages/proto)
+
+```bash
+# ensure rust is installed
+curl https://sh.rustup.rs -sSf | sh
+rustup self uninstall` to uninstall
+
+# install protols
+cargo install protols
+```
 
 ## Notes
 
-- to see the **active context** - `debug: open key context view` in the **command palette**
-- `~/.config/zed/` is where the settings are stored
-- `~/.local/share/zed/` is where the data is stored
+- To view the **active context**, run `debug: open key context view` from the **command palette**.
+- The settings are stored in `~/.config/zed/`.
+- Data is stored in `~/.local/share/zed/`.
+
+### python
+
+When working with different python environments copy the env path into the **local settings**:
+
+```json
+{
+  // LSP Settings
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python.analysis": {
+          "diagnosticMode": "workspace"
+          // "typeCheckingMode": "strict"
+        },
+        "python": {
+          "pythonPath": "~/miniconda3/envs/ml/bin/python"
+        }
+      }
+    }
+  }
+}
+```
+
+# TODO:
+
+- [ ] file finder/ project panel (open files in new splits)
+- [x] comments (`copy` and `yank` keybinding)
+- [ ] tasks

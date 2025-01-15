@@ -1,12 +1,10 @@
 {
-
-
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
 
     "group/right-status": {
       "orientation": "inherit",
-      "modules": ["cpu", "memory", "disk", "network#speed", "network#ethernet", "network#wifi", "custom/vpn", ]
+      "modules": ["cpu", "memory", "disk", "network#speed", "network#ethernet", "network#wifi", "custom/vpn"]
     },
 
     "group/right-power": {
@@ -16,7 +14,7 @@
 
     "group/right-time": {
       "orientation": "inherit",
-      "modules": ["clock", "custom/notification"]
+      "modules": ["clock", "idle_inhibitor", "custom/notification"]
     },
 
     "modules-left": ["sway/workspaces", "sway/scratchpad", "sway/window", "sway/mode"],
@@ -37,8 +35,8 @@
 						"7": "7",
 						"8": "8",
 						"9": "9",
-						"default": "",
-        },
+						"default": ""
+        }
      },
 
      "sway/scratchpad": {
@@ -53,7 +51,7 @@
          "format": "{app_id}",
          "format-alt": "{title}",
          "max-length": 20,
-         "tooltip": true,
+         "tooltip": true
          // "icon": true,
          // "icon-size": 24
      },
@@ -62,13 +60,12 @@
          "format": "<span style=\"italic\">{}</span>"
      },
 
-
     "network#ethernet": {
       "interface": "en*",
       "interval": 1,
       "format-ethernet": "󰈁",
       "format-disconnected": "󰈂",
-      "tooltip-format": "IP: {ipaddr}\n: {bandwidthUpBits}\t: {bandwidthDownBits}",
+      "tooltip-format": "IP: {ipaddr}\n: {bandwidthUpBits}\t: {bandwidthDownBits}"
     },
 
     "network#wifi": {
@@ -76,38 +73,38 @@
       "interval": 1,
       "format-wifi": "󰖩  {essid}",
       "format-disconnected": "󰖪 ",
-      "tooltip-format": "IP: {ipaddr}\n: {bandwidthUpBits}\t: {bandwidthDownBits}",
+      "tooltip-format": "IP: {ipaddr}\n: {bandwidthUpBits}\t: {bandwidthDownBits}"
     },
 
    "network#speed": {
       "interval": 1,
       "format": "{bandwidthUpBits}\t\n{bandwidthDownBits}\t",
-      "tooltip-format": "IP: {ipaddr}\n: {bandwidthUpBits}\t: {bandwidthDownBits}",
+      "tooltip-format": "IP: {ipaddr}\n: {bandwidthUpBits}\t: {bandwidthDownBits}"
     },
 
 
     "cpu": {
         "interval": 1,
         "format": "<span line_height='0.8'><span size='70%'>CPU</span>\n{usage}%</span>",
-        "states": { "normal": 10, "warning": 50, "critical": 90 },
+        "states": { "normal": 10, "warning": 50, "critical": 90 }
     },
 
     "memory": {
         "interval": 1,
         "format": "<span line_height='0.8'><span size='70%'>MEM</span>\n{percentage}%</span>",
-        "states": { "warning": 50, "critical": 90 },
+        "states": { "warning": 50, "critical": 90 }
     },
 
     "disk": {
       "interval": 1,
-      "format": "<span line_height='0.8'><span size='70%'>DISK</span>\n{percentage_used}%</span>",
+      "format": "<span line_height='0.8'><span size='70%'>DISK</span>\n{percentage_used}%</span>"
     },
 
     "clock": {
         "timezone": "Europe/Paris",
         "format": "{:%H:%M}",
         "format-alt": "{:%H:%M:%S}",
-        "tooltip-format": "{:%a, %d. %b  %H:%M}",
+        "tooltip-format": "{:%a, %d. %b  %H:%M}"
     },
 
     "backlight": {
@@ -119,7 +116,7 @@
     "battery": {
         "format": "{icon}",
         "format-alt": "{capacity}%",
-        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
         // "format-charging": ["󰂆", "󰂇", "󰂈", "󰂉", "󰂊", "󰂋", "󰂅"],
         //"format-icons": ["⚡", "⚡", "🔋", "☻"]
     },
@@ -138,7 +135,7 @@
       "tooltip-format": "{controller_alias}\t{controller_address}",
       "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
       "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-      "tooltip-format-enumerate-connected-battery": "{device_alias} ({device_battery_percentage}%)\t{device_address}",
+      "tooltip-format-enumerate-connected-battery": "{device_alias} ({device_battery_percentage}%)\t{device_address}"
     },
 
     "custom/music": {
@@ -157,8 +154,16 @@
         "tooltip": true,
         "return-type": "json",
         "exec": "$HOME/.config/waybar/scripts/mullvad.sh",
-        "on-click": "\"/opt/Mullvad VPN/mullvad-vpn\"",
+        "on-click": "\"/opt/Mullvad VPN/mullvad-vpn\" --disable-gpu"
     },
+
+     "idle_inhibitor": {
+         "format": "{icon}",
+         "format-icons": {
+             "activated": "",
+             "deactivated": ""
+         }
+     },
 
     "custom/notification": {
       "tooltip": true,
@@ -180,5 +185,5 @@
       "on-click": "swaync-client -t -sw",
       "on-click-right": "swaync-client -d -sw",
       "escape": true
-    },
+    }
 }

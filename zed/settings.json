@@ -13,6 +13,12 @@
       "provider": "copilot_chat",
       "model": "claude-3-5-sonnet"
     },
+    "inline_alternatives": [
+      {
+        "provider": "ollama",
+        "model": "qwen2.5-coder:14b-instruct-q2_K"
+      }
+    ],
     "version": "2",
     "dock": "right",
     "default_width": 1200
@@ -86,7 +92,8 @@
   },
 
   // Completion Settings
-  "completion_documentation_secondary_query_debounce": 300,
+  // "completion_documentation_secondary_query_debounce": 300,
+  "completion_documentation_secondary_query_debounce": 400,
   "auto_signature_help": true,
   "inline_completions": { "disabled_globs": [".env"] }, // A list of globs representing files that inline completions should be disabled for.
   "features": { "inline_completion_provider": "copilot" }, // Which inline completion provider to use.
@@ -158,7 +165,7 @@
           // "typeCheckingMode": "strict"
         },
         "python": {
-          "pythonPath": "/home/sven/miniconda3/bin/python"
+          "pythonPath": "~/miniconda3/bin/python"
         }
       }
     }

@@ -2,7 +2,6 @@
 
 ### =============== definitions =============================================
 
-
 # Define the workspaces
 # we're omitting names for waybar, but the order should be like this:
 # 0: tmp, 1: term, 2: ide, 3: web, 4: msg, 5: five, 6: six, 7: seven, 8: eight, 9: nine
@@ -17,6 +16,9 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 
+# alway pin ws0 to the laptop monitor
+workspace 0 output $laptop
+workspace "[1-9]*" output !$laptop
 
 # Switch to workspace
 bindsym $mod+0 workspace number $ws0
@@ -48,6 +50,12 @@ bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
+# Move the focused window with Shift + direction keys
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
 # move workspaces to outputs
 bindsym $mod+$mod2+h move workspace to output left
 bindsym $mod+$mod2+l move workspace to output right
@@ -60,9 +68,14 @@ bindsym $mod+$mod2+j move workspace to output down
 #bindsym $mod+$mod2+$up  workspace next
 #bindsym $mod+$mod2+$right workspace next
 
+# Assign applications to workspaces
+# swaymsg -t get_tree | grep -i 'class\|app_id'
+assign [app_id="dev.zed.Zed"] workspace number $ws2
+assign [app_id="firefox"] workspace number $ws3
+assign [class="Brave-browser"] workspace number $ws3
+assign [class="Signal"] workspace number  $ws5
 
-# Move the focused window with the same, but add Shift
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
+# Autostart applications
+exec "swaymsg 'workspace $ws1; exec alacritty'"
+exec "swaymsg 'exec flatpak run com.brave.Browser --incognito'"
+exec "swaymsg 'workspace $ws1'"

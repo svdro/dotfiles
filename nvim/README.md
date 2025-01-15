@@ -1,10 +1,56 @@
 ## nvim config
 
-## TODOs:
+## Dependencies
 
-- [ ] **Copilot** replacement (probably don't not worth the hassle)
-  - [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua?ref=tamerlan.dev) unofficial, might be better
-  - [llm.nvim](https://github.com/huggingface/llm.nvim) alternative to copilot
+archlinux:
+
+```bash
+# wl-clipboard (on wayland)
+sudo pacman -S wl-clipboard
+
+# nerd-fonts
+sudo pacman -S ttf-hack-nerd
+
+
+# nodejs for prettier and unzip for stylua (mason)
+sudo pacman -S nodejs npm
+sudo pacman -S unzip
+
+# ripgrep  (telescope)
+sudo pacman -S ripgrep
+```
+
+macos:
+
+```bash
+# nerd-fonts
+brew tap homebrew/cask-fonts
+brew install font-hack-nerd-font
+
+# ripgrep (telescope)
+brew install ripgrep
+```
+
+test nerd-fonts:
+
+```vim
+:NvimWebDevIconsHiTest
+```
+
+## setup:
+
+```bash
+# clone the dotfiles repo
+cd ~
+git clone https://github.com/svdro/dotfiles.git
+
+# symlink the nvim config
+ln -s ~/dotfiles/nvim ~/.config/nvim
+```
+
+- open nvim
+- wait for **Lazy** to install all packages
+- wait for **Mason** to set up all \*\*language servers, formatters, etc
 
 ## all plugins
 

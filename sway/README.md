@@ -23,6 +23,16 @@ ln -s ~/dotfiles/sway ~/.config/
   - NOTE: on some distros `sudo usermod -aG video $USER` is required to run brightnessctl without sudo
 - [grimshot](https://github.com/OctopusET/sway-contrib)
 
+- [jq](https://github.com/jqlang/jq) - for getting current active output script
+
+## nvidia
+
+sway doesn't start with an nvidia gpu.
+to launch anyway, modify the desktop entry:
+
+- edit `~/usr/share/wayland-sessions/sway.desktop`
+- change the `Exec sway` line to `Exec sway --unsupported-gpu`
+
 ## keybindings
 
 ### actions
@@ -43,6 +53,26 @@ ln -s ~/dotfiles/sway ~/.config/
 - **Mod + f** - Toggle fullscreen
 - **Mod + w** - tabbed layout
 - **Mod + e** - toggle split layout
+
+## dark mode
+
+flatpak:
+
+```bash
+# override GTK theme for consistent dark mode in flatpak apps
+flatpak override --user --env=GTK_THEME=Adwaita-dark
+```
+
+nautilus:
+
+- create a custom desktop entry in `~/.local/share/applications/nautilus.desktop`:
+
+```
+[Desktop Entry]
+Type=Application
+Name=Nautilus
+Exec=env GTK_THEME="Adwaita-dark" nautilus
+```
 
 ## TODO
 

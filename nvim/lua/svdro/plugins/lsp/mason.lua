@@ -23,6 +23,7 @@ return {
     -- setup mason-lspconfig with list of language servers to install
     -- NOTE: when changing this update list of servers in README.md
     mason_lspconfig.setup({
+      automatic_installation = true,
       ensure_installed = {
         "cssls",
         "dockerls",
@@ -31,7 +32,7 @@ return {
         "html",
         "lua_ls",
         "pyright",
-        "tsserver",
+        -- "tsserver", -- doesn't exist anymore
       },
     })
 
@@ -42,6 +43,7 @@ return {
         "isort",
         "golines",
         "gofumpt",
+        "markdownlint",
         "prettier",
         "stylua",
       },

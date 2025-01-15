@@ -1,37 +1,49 @@
-.modules-left > * { color: @lavender; }
+.modules-left > * {
+    color: @lavender;
+}
 
-#scratchpad, #window, #mode { margin-left: 1em; }
+#scratchpad,
+#window,
+#mode {
+    margin-left: 1em;
+}
 
 #workspaces {
-  background-color: @surface0;
-  border-radius: 1em;
+    background-color: @surface0;
+    border-radius: 1em;
 }
 
 #workspaces button {
-  color: @lavender;
-  font-size: 1.1em;
-  border-radius: 1em;
-  padding: 0.4em;
+    color: @lavender;
+    font-size: 1.1em;
+    border-radius: 1em;
+    padding: 0.4em;
 }
 
-#workspaces button.active { color: @yellow;; }
-#workspaces button.focused { color: @blue; }
-#workspaces button.urgent { color: @red; }
+#workspaces button.active {
+    color: @yellow;
+}
+#workspaces button.focused {
+    color: @blue;
+}
+#workspaces button.urgent {
+    color: @red;
+}
 
 #workspaces button:hover {
-  color: @sapphire;
-  border-radius: 1em;
+    color: @sapphire;
+    border-radius: 1em;
 }
 
 #mode {
-  color: @maroon;
-  border-radius: 1em;
-  padding: 0.4em;
-  font-size: 1.1em;
+    color: @maroon;
+    border-radius: 1em;
+    padding: 0.4em;
+    font-size: 1.1em;
 }
 
 #scratchpad {
-  background-color: @surface0;
-  border-radius: 1em;
-  padding: 0.4em 1em;
+    background-color: @surface0;
+    border-radius: 1em;
+    padding: 0.4em 1em;
 }

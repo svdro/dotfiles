@@ -52,35 +52,50 @@ return {
     build = ":GoInstallBinaries", -- install gopls, etc when installing plugin
   },
 
-  -- copilot
-  {
-    "github/copilot.vim",
-    config = function()
-      vim.g.copilot_no_tab_map = true -- disable tab mapping
+  ---- copilot
+  --{
+  --"github/copilot.vim",
+  --config = function()
+  --vim.g.copilot_no_tab_map = true -- disable tab mapping
 
-      -- set keymaps
-      local keymap = vim.keymap
-      local function opts(desc, args)
-        local defaults = { silent = true, noremap = true, desc = "Copilot: " .. desc }
-        return vim.tbl_deep_extend("force", defaults, args or {})
-      end
+  ---- set keymaps
+  --local keymap = vim.keymap
+  --local function opts(desc, args)
+  --local defaults = { silent = true, noremap = true, desc = "Copilot: " .. desc }
+  --return vim.tbl_deep_extend("force", defaults, args or {})
+  --end
 
-      -- NOTE:
-      -- mapping the <leader> key in insert mode (e.g. <leader><tab>) affects
-      -- typing behavior (although <leader><tab> is a cool keybinding).
-      -- try these for now and change them in the future if needed:
-      local args = { expr = true, replace_keycodes = false }
-      keymap.set("i", "jj", 'copilot#Accept("<CR>")', opts("accept suggestion", args)) -- accept copilot suggestion
-      keymap.set("i", "jk", "<Plug>(copilot-accept-word)", opts("next suggestion", {})) -- next copilot suggestion
-      keymap.set("i", "jl", "<Plug>(copilot-accept-line)", opts("next suggestion", {})) -- next copilot suggestion
+  ---- NOTE:
+  ---- mapping the <leader> key in insert mode (e.g. <leader><tab>) affects
+  ---- typing behavior (although <leader><tab> is a cool keybinding).
+  ---- try these for now and change them in the future if needed:
+  --local args = { expr = true, replace_keycodes = false }
+  --keymap.set("i", "jj", 'copilot#Accept("<CR>")', opts("accept suggestion", args)) -- accept copilot suggestion
+  --keymap.set("i", "jk", "<Plug>(copilot-accept-word)", opts("next suggestion", {})) -- next copilot suggestion
+  --keymap.set("i", "jl", "<Plug>(copilot-accept-line)", opts("next suggestion", {})) -- next copilot suggestion
 
-      keymap.set("i", "jL", "<Plug>(copilot-next)", opts("next suggestion", {})) -- next copilot suggestion
-      keymap.set("i", "jH", "<Plug>(copilot-previous)", opts("prev suggestion", {})) -- don't use this, just use next to toggle
-      --keymap.set("i", "jL", "<Plug>(copilot-next)", opts("next suggestion", {})) -- next copilot suggestion
-      --keymap.set("i", "jH", "<Plug>(copilot-previous)", opts("prev suggestion", {})) -- don't use this, just use next to toggle
+  --keymap.set("i", "jL", "<Plug>(copilot-next)", opts("next suggestion", {})) -- next copilot suggestion
+  --keymap.set("i", "jH", "<Plug>(copilot-previous)", opts("prev suggestion", {})) -- don't use this, just use next to toggle
+  ----keymap.set("i", "jL", "<Plug>(copilot-next)", opts("next suggestion", {})) -- next copilot suggestion
+  ----keymap.set("i", "jH", "<Plug>(copilot-previous)", opts("prev suggestion", {})) -- don't use this, just use next to toggle
 
-      keymap.set("i", "jJ", "<Plug>(copilot-dismiss)", opts("dismiss suggestion", {})) -- dismiss copilot suggestion
-      keymap.set("i", "JJ", "<Plug>(copilot-suggest)", opts("suggest", {})) -- suggest copilot suggestion
-    end,
-  },
+  --keymap.set("i", "jJ", "<Plug>(copilot-dismiss)", opts("dismiss suggestion", {})) -- dismiss copilot suggestion
+  --keymap.set("i", "JJ", "<Plug>(copilot-suggest)", opts("suggest", {})) -- suggest copilot suggestion
+  --end,
+  --},
+
+  -- -- supermaven
+  -- {
+  --     "supermaven-inc/supermaven-nvim",
+  --     config = function()
+  --         require("supermaven-nvim").setup({
+  --             -- your config here
+  --             keymaps = {
+  --                 accept_suggestion = "jj",
+  --                 clear_suggestion = "jJ",
+  --                 accept_word = "jk",
+  --             },
+  --         })
+  --     end,
+  -- },
 }

@@ -1,14 +1,3 @@
-# Colorschemes
-# - "https://github.com/alacritty/alacritty-theme/tree/master/themes"
-# - create a new file per colorscheme, and import it here.
-import = [
-  #"~/.config/alacritty/catppuccin_mocha.toml"
-  #"~/.config/alacritty/catppuccin_macchiato.toml"
-  #"~/.config/alacritty/gruvbox_material.toml"
-  #"~/.config/alacritty/tokyonight_storm.toml"
-  "~/.config/alacritty/tokyonight.toml"
-  #"~/.config/alacritty/tokyonight-night.toml"
-]
 
 [env]
 TERM = "xterm-256color"
@@ -25,3 +14,16 @@ decorations = "Buttonless" # "Full" | "None" | "Transparent" | "Buttonless"
 [font]
 normal.family = "Hack Nerd Font"
 size = 11
+
+[general]
+# Colorschemes
+# - "https://github.com/alacritty/alacritty-theme/tree/master/themes"
+# - create a new file per colorscheme, and import it here.
+import = [
+  "~/.config/alacritty/catppuccin_mocha.toml"
+  #"~/.config/alacritty/catppuccin_macchiato.toml"
+  #"~/.config/alacritty/gruvbox_material.toml"
+  #"~/.config/alacritty/tokyonight_storm.toml"
+  #"~/.config/alacritty/tokyonight.toml"
+  #"~/.config/alacritty/tokyonight-night.toml"
+]
